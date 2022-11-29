@@ -22,7 +22,7 @@ export class EquipeComponent implements OnInit {
 
   getEquipes() {
     this.apiService
-      .get('getEquipes')
+      .get('getAllEquipe')
       .subscribe((equipes) => (this.equipes = equipes));
   }
 
