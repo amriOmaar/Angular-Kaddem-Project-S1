@@ -32,7 +32,9 @@ export class DepartementComponent implements OnInit {
   deleteDepartement(elementId: number) {
     this.apiService
       .delete('deleteDepart', elementId)
-      .subscribe(() => location.reload());
+      .subscribe(() => {})
+      location.reload()
+      ;
   }
 
   openAddDepartementDialog() {

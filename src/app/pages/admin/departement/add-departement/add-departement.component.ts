@@ -1,9 +1,10 @@
+import { DepartementComponent } from './../departement.component';
 import { Departement } from './../../../../core/model/Departement';
 import { ApiService } from './../../../../core/services/admin/api.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddContratComponent } from './../../contrat/add-contrat/add-contrat.component';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-departement',
@@ -14,14 +15,17 @@ export class AddDepartementComponent implements OnInit {
   departementForm!: FormGroup;
   nomDepart!: FormControl;
 
+  receivedRow: any;
+
 
   // pattern1 =  "[a-zA-Z]";
 
   constructor(
-    private formBuilder: FormBuilder,
-    private apiService: ApiService,
-    public dialogRef: MatDialogRef<AddDepartementComponent>
+    public dialogRef: MatDialogRef<DepartementComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private apiService: ApiService
     ) {
+      this.receivedRow = data;
       this.initForm();
       this.createForm();
     }
