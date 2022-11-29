@@ -16,6 +16,7 @@ export class DepartementComponent implements OnInit {
   constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
   departements!: any;
+  nbrDepart: any
 
   ngOnInit(): void {
     this.getDepartements()
@@ -27,9 +28,10 @@ export class DepartementComponent implements OnInit {
       .subscribe((departements) => (this.departements = departements));
   }
 
+
   deleteDepartement(elementId: number) {
     this.apiService
-      .delete('delete/', elementId)
+      .delete('deleteDepart', elementId)
       .subscribe(() => location.reload());
   }
 

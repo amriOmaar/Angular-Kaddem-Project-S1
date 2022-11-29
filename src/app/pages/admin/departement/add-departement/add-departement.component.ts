@@ -39,8 +39,6 @@ export class AddDepartementComponent implements OnInit {
 
    this.nomDepart = new FormControl('', [Validators.required]);
 
-  //  this.nomDepart = new FormControl ('', [Validators.required, Validators.pattern('^[a-zA-Z]')])
-
   }
 
   createForm() {
