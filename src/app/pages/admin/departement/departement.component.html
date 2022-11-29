@@ -3,18 +3,21 @@
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Vos departements</h2>
+          <h2 class="card-title">Vos Departements</h2>
 
           <!-- Table with stripped rows -->
           <div
             class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"
           >
             <div class="dataTable-container">
-              <table class="table datatable dataTable-table">
+              <table class="table datatable dataTable-table ">
                 <thead>
                   <tr>
                     <th scope="col" data-sortable="" style="width: 9.203%">
                       Nom Departement
+                    </th>
+                    <th scope="col" data-sortable="" style="width: 9.203%">
+                      Chef Departement
                     </th>
                     <th></th>
                   </tr>
@@ -22,6 +25,7 @@
                 <tbody *ngFor="let departement of departements">
                   <tr>
                     <td style="color: #256d85"> {{ departement.nomDepart }} </td>
+                    <td style="color: #256d85"> {{ departement.chefDepart }} </td>
 
                     <td style="display: flex; gap: 8px">
                       <button
@@ -75,7 +79,7 @@
                 <span
                   class="mat-mdc-button-persistent-ripple mdc-button__ripple"
                 ></span
-                ><span class="mdc-button__label">Add Departement</span
+                ><span class="mdc-button__label">Ajouter Departement</span
                 ><span class="mat-mdc-focus-indicator"></span
                 ><span
                   matripple=""

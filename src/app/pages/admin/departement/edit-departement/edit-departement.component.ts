@@ -15,6 +15,7 @@ export class EditDepartementComponent implements OnInit {
 
   departementForm!: FormGroup;
   nomDepart!: FormControl;
+  chefDepart!: FormControl;
 
   receivedRow: any;
 
@@ -35,12 +36,17 @@ export class EditDepartementComponent implements OnInit {
     this.nomDepart = new FormControl(this.receivedRow.departement.nomDepart, [
       Validators.required,
     ]);
+    this.chefDepart = new FormControl(this.receivedRow.departement.chefDepart, [
+      Validators.required,
+    ]);
   }
 
   createForm() {
     this.departementForm = new FormGroup({
       nomDepart: this.nomDepart,
+      chefDepart: this.chefDepart,
     });
+
   }
 
   resetControls() {
@@ -51,6 +57,7 @@ export class EditDepartementComponent implements OnInit {
     const departementUpdated = {
       idDepart: idDepart,
       nomDepart: this.departementForm.value.nomDepart,
+      chefDepart: this.departementForm.value.chefDepart,
     };
     this.apiService
       .update('updateDepart', idDepart, departementUpdated)

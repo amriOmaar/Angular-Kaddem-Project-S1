@@ -1,4 +1,4 @@
-<h2 class="card-title">Edit Contrat</h2>
+<h2 class="card-title">Edit Departement</h2>
 
 <form class="row g-3" [formGroup]="departementForm">
 
@@ -32,6 +32,37 @@
       </div>
 
     </div>
+
+    <label class="form-label">Chef Departement</label>
+    <div class="input-group mb-3">
+      <input
+        [ngClass]="{
+          'input-invalid': chefDepart.touched && chefDepart.invalid,
+          'input-valid': chefDepart.touched && chefDepart.valid
+        }"
+        type="text"
+        class="form-control"
+        formControlName="chefDepart"
+      />
+      <div
+        class="message-invalid"
+        *ngIf="chefDepart.touched && chefDepart.hasError('required')"
+      >
+        Nom  Departement Is Required
+      </div>
+      <div
+        cla²ss="message-invalid"
+        *ngIf="chefDepart.touched && chefDepart.hasError('pattern')"
+      >
+        Nom  departement be lettre
+      </div>
+      <!--success message-->
+      <div class="message-valid" *ngIf="chefDepart.touched && !chefDepart.errors">
+        Looks good!
+      </div>
+
+    </div>
+
   </div>
 
   <div class="text-center">
@@ -39,6 +70,7 @@
       (click)="upadteDepartement(receivedRow.departement.idDepart)"
       type="submit"
       class="btn btn-primary mx-2"
+      [disabled]="!departementForm.valid"
     >
       <i class="fa-solid fa-pen-nib pe-2"></i>Edit
     </button>
