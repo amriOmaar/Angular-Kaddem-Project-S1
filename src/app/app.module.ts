@@ -33,6 +33,8 @@ import { EditDepartementComponent } from './pages/admin/departement/edit-departe
 import { UniversiteComponent } from './pages/admin/universite/universite.component';
 import { AddUniversiteComponent } from './pages/admin/universite/add-universite/add-universite.component';
 import { EditUniversiteComponent } from './pages/admin/universite/edit-universite/edit-universite.component';
+import { DetailequipeComponent } from './pages/admin/detailequipe/detailequipe.component';
+import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetailequipe/adddetailequipe.component';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { EditUniversiteComponent } from './pages/admin/universite/edit-universit
     UniversiteComponent,
     AddUniversiteComponent,
     EditUniversiteComponent,
+    DetailequipeComponent,
+    AdddetailequipeComponent,
 
   ],
   imports: [
