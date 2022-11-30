@@ -14,7 +14,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 export class AddDepartementComponent implements OnInit {
   departementForm!: FormGroup;
   nomDepart!: FormControl;
-  chefDepart!: FormControl;
 
   receivedRow: any;
 
@@ -43,14 +42,12 @@ export class AddDepartementComponent implements OnInit {
     // });
 
    this.nomDepart = new FormControl('', [Validators.required]);
-   this.chefDepart = new FormControl('', [Validators.required]);
 
   }
 
   createForm() {
     this.departementForm = new FormGroup({
       nomDepart: this.nomDepart,
-      chefDepart: this.chefDepart,
     });
   }
 

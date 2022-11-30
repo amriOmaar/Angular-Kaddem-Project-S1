@@ -15,7 +15,6 @@ export class EditDepartementComponent implements OnInit {
 
   departementForm!: FormGroup;
   nomDepart!: FormControl;
-  chefDepart!: FormControl;
 
   receivedRow: any;
 
@@ -36,15 +35,11 @@ export class EditDepartementComponent implements OnInit {
     this.nomDepart = new FormControl(this.receivedRow.departement.nomDepart, [
       Validators.required,
     ]);
-    this.chefDepart = new FormControl(this.receivedRow.departement.chefDepart, [
-      Validators.required,
-    ]);
   }
 
   createForm() {
     this.departementForm = new FormGroup({
       nomDepart: this.nomDepart,
-      chefDepart: this.chefDepart,
     });
 
   }

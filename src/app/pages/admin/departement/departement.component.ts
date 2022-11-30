@@ -1,3 +1,5 @@
+import { Departement } from './../../../core/model/Departement';
+import { ShowListEtudiantsComponent } from './show-list-etudiants/show-list-etudiants.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EditDepartementComponent } from './edit-departement/edit-departement.component';
 import { EditContratComponent } from './../contrat/edit-contrat/edit-contrat.component';
@@ -16,7 +18,7 @@ export class DepartementComponent implements OnInit {
   constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
   departements!: any;
-  nbrDepart: any
+  etudiants!: any
 
   ngOnInit(): void {
     this.getDepartements()
@@ -47,5 +49,10 @@ export class DepartementComponent implements OnInit {
       data: { departement },
     });
   }
+
+  openListEtudiantDialog(departement:Object) {
+    this.dialog.open(ShowListEtudiantsComponent, { width: '60%', data: { departement}, })
+  }
+
 
 }

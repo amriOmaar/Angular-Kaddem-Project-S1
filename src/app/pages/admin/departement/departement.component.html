@@ -3,29 +3,47 @@
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-body">
-          <h2 class="card-title">Vos Departements</h2>
+
+
+          <a class="nav-link collapsed">
+            <i class="fa-solid fa-building fa-lg padding__right__fa"></i>
+            <span>Departement</span>
+          </a>
+
+
 
           <!-- Table with stripped rows -->
           <div
-            class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"
-          >
+            class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+
+            <button (click)="openAddDepartementDialog()" mat-raised-button="" color="primary"
+                class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base">
+                <span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span
+                  class="mdc-button__label">Add Departement</span><span class="mat-mdc-focus-indicator"></span><span
+                  matripple="" class="mat-ripple mat-mdc-button-ripple"></span><span
+                  class="mat-mdc-button-touch-target"></span>
+              </button>
+
             <div class="dataTable-container">
-              <table class="table datatable dataTable-table ">
+              <table class="table datatable dataTable-table">
                 <thead>
                   <tr>
-                    <th scope="col" data-sortable="" style="width: 9.203%">
-                      Nom Departement
+                    <th scope="col" style="width: 9.203%">
+                      Nom
                     </th>
+
                     <th scope="col" data-sortable="" style="width: 9.203%">
-                      Chef Departement
+                      Etudiants
                     </th>
+
                     <th></th>
                   </tr>
                 </thead>
                 <tbody *ngFor="let departement of departements">
                   <tr>
                     <td style="color: #256d85"> {{ departement.nomDepart }} </td>
-                    <td style="color: #256d85"> {{ departement.chefDepart }} </td>
+                    <td style="color: #256d85"><button type="button" (click)="openListEtudiantDialog(departement)" class="btn btn-outline-success"><i
+                      class="fas fa-users	"></i></button></td>
 
                     <td style="display: flex; gap: 8px">
                       <button
@@ -63,31 +81,15 @@
                       >
                         <i style="font-size: 12px" class="bi bi-gear"></i>
                       </button>
+
+
                     </td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <div class="dataTable-bottom">
-              <button
-                (click)="openAddDepartementDialog()"
-                mat-raised-button=""
-                color="primary"
-                class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base"
-              >
-                <span
-                  class="mat-mdc-button-persistent-ripple mdc-button__ripple"
-                ></span
-                ><span class="mdc-button__label">Ajouter Departement</span
-                ><span class="mat-mdc-focus-indicator"></span
-                ><span
-                  matripple=""
-                  class="mat-ripple mat-mdc-button-ripple"
-                ></span
-                ><span class="mat-mdc-button-touch-target"></span>
-              </button>
-            </div>
+
           </div>
           <!-- End Table with stripped rows -->
         </div>

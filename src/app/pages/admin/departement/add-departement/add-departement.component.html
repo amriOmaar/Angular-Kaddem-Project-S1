@@ -33,36 +33,6 @@
         </div>
 
       </div>
-
-      <label class="form-label">Chef Departement</label>
-      <div class="input-group mb-3">
-        <input
-          [ngClass]="{
-            'input-invalid': chefDepart.touched && chefDepart.invalid,
-            'input-valid': chefDepart.touched && chefDepart.valid
-          }"
-          type="text"
-          class="form-control"
-          formControlName="chefDepart"
-        />
-        <div
-          class="message-invalid"
-          *ngIf="nomDepart.touched && nomDepart.hasError('required')"
-        >
-          Chef Departement Is Required
-        </div>
-        <div
-          cla²ss="message-invalid"
-          *ngIf="chefDepart.touched && chefDepart.hasError('pattern')"
-        >
-          Chef departement be lettre
-        </div>
-        <!--success message-->
-        <div class="message-valid" *ngIf="chefDepart.touched && !chefDepart.errors">
-          Looks good!
-        </div>
-
-      </div>
     </div>
 
     <div class="text-center">

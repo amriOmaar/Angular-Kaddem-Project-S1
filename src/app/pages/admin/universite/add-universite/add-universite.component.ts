@@ -31,7 +31,7 @@ export class AddUniversiteComponent implements OnInit {
 
   onSubmit() {
     const universiteToAdd = {
-      nomDepart: this.universiteForm.value.nomUniv,
+      nomUniv: this.universiteForm.value.nomUniv,
     };
     this.addUniversite(universiteToAdd);
     this.resetControls();
