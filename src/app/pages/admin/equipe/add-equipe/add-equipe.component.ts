@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ApiService} from "../../../../core/services/admin/api.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../../../core/services/admin/api.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-equipe',
   templateUrl: './add-equipe.component.html',
-  styleUrls: ['./add-equipe.component.css']
+  styleUrls: ['./add-equipe.component.css'],
 })
 export class AddEquipeComponent implements OnInit {
-
   equipeForm!: FormGroup;
   niveau!: FormControl;
   nom!: FormControl;
@@ -25,14 +24,12 @@ export class AddEquipeComponent implements OnInit {
   ngOnInit(): void {}
 
   initForm() {
-  ;
     this.niveau = new FormControl('', [Validators.required]);
     this.nom = new FormControl('', [Validators.required]);
   }
 
   createForm() {
     this.equipeForm = new FormGroup({
-
       niveau: this.niveau,
       nom: this.nom,
     });
@@ -60,5 +57,4 @@ export class AddEquipeComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
-
 }

@@ -32,7 +32,7 @@
 
                 <form class="row g-3 needs-validation" novalidate>
                   <div class="col-12">
-                    <label for="yourName" class="form-label">Your Name</label>
+                    <label for="yourName" class="form-label">First Name</label>
                     <input
                       type="text"
                       name="name"
@@ -40,11 +40,27 @@
                       id="yourName"
                       required
                     />
-                    <div class="invalid-feedback">Please, enter your name!</div>
+                    <div class="invalid-feedback">
+                      Please, enter Your First Name!
+                    </div>
                   </div>
 
                   <div class="col-12">
-                    <label for="yourEmail" class="form-label">Your Email</label>
+                    <label for="yourName" class="form-label">Last Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      id="yourName"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please, enter Your Last Name!
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="yourEmail" class="form-label">Email</label>
                     <input
                       type="email"
                       name="email"
@@ -58,8 +74,24 @@
                   </div>
 
                   <div class="col-12">
+                    <label for="yourPassword" class="form-label"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      id="yourPassword"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please enter a valid Password!
+                    </div>
+                  </div>
+
+                  <div class="col-12">
                     <label for="yourUsername" class="form-label"
-                      >Username</label
+                      >First Name</label
                     >
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend"
@@ -73,7 +105,7 @@
                         required
                       />
                       <div class="invalid-feedback">
-                        Please choose a username.
+                        Please choose a First Name.
                       </div>
                     </div>
                   </div>
@@ -91,6 +123,37 @@
                     />
                     <div class="invalid-feedback">
                       Please enter your password!
+                    </div>
+                  </div>
+
+                  <div class="col-6 offset-3">
+                    <label class="form-label">Option</label>
+                    <select
+                      tabindex="-1"
+                      [ngClass]="{
+                        'input-invalid': option.touched && option.invalid,
+                        'input-valid': option.touched && option.valid
+                      }"
+                      class="form-select"
+                      aria-label="Default select example"
+                      formControlName="Niveau"
+                    >
+                      <option value="JUNIOR" selected>JUNIOR</option>
+                      <option value="SENIOR">SENIOR</option>
+                      <option value="EXPERT">EXPERT</option>
+                    </select>
+                    <div
+                      class="message-invalid"
+                      *ngIf="option.touched && option.hasError('required')"
+                    >
+                      Niveau Is Required
+                    </div>
+                    <!--success message-->
+                    <div
+                      class="message-valid"
+                      *ngIf="option.touched && !option.errors"
+                    >
+                      Looks good!
                     </div>
                   </div>
 
@@ -126,10 +189,6 @@
                   </div>
                 </form>
               </div>
-            </div>
-
-            <div class="credits">
-              Designed by <a href="https://NextHope.com/">NextHope</a>
             </div>
           </div>
         </div>
