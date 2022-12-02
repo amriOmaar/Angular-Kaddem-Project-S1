@@ -8,11 +8,9 @@
 
 
           <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns mt-4 ">
-            <i class="fa-solid fa-building fa-lg padding__right__fa"></i>
-
-
-                <div class="dataTable-bottom">
-                  <button
+            <div class="form-group">
+              <i class="fa-solid fa-building fa-lg padding__right__fa"></i>
+              <button
                     (click)="openAddDepartementDialog()"
                     mat-raised-button=""
                     color="primary"
@@ -28,7 +26,19 @@
                     ></span
                     ><span class="mat-mdc-button-touch-target"></span>
                   </button>
-                </div>
+
+            </div>
+
+
+            <div class="input-group">
+              <div class="form-outline">
+                <input type="search" id="form1" class="form-control"
+                [(ngModel)]="nomDepartement">
+              </div>
+              <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
 
                 <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
 
@@ -36,8 +46,10 @@
               <table class="table datatable dataTable-table">
                 <thead>
                   <tr>
-                    <th scope="col" style="width: 9.203%">
+                    <th scope="col" style="width: 9.203%"
+                    (click)="sortByNomDepart('nomDepartement')"                    >
                       Nom
+                      <i class="fa fa-sort"></i>
                     </th>
 
                     <th scope="col" data-sortable="" style="width: 9.203%">
@@ -47,9 +59,12 @@
                     <th></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let departement of departements">
+                <tbody *ngFor="let departement of departements | filter:nomDepartement
+                | orderBy: key: reverse
+                | paginate: { itemsPerPage: 3, currentPage: nbrPage }">
                   <tr>
-                    <td class="text-xl-center" style="color: #256d85"> {{ departement.nomDepart }} </td>
+                    <td class="text-xl-center" style="color: #256d85">
+                      {{ departement.nomDepart }}</td>
                     <td style="color: #256d85"><button type="button"
                       (click)="openListEtudiantDialog(departement)" class="btn btn-outline-success">
                       <i class="fas fa-user-graduate"></i>
@@ -96,6 +111,7 @@
                   </tr>
                 </tbody>
               </table>
+              <pagination-controls (pageChange)="nbrPage = $event"></pagination-controls>
             </div>
 
           </div>

@@ -1,7 +1,6 @@
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './pages/admin/error/error.component';
@@ -11,7 +10,7 @@ import { ContactComponent } from './pages/admin/contact/contact.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { ContratComponent } from './pages/admin/contrat/contrat.component';
 import { AdminComponentsModule } from './components/admin-components/admin-components.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddContratComponent } from './pages/admin/contrat/add-contrat/add-contrat.component';
 import { EquipeComponent } from './pages/admin/equipe/equipe.component';
@@ -35,6 +34,9 @@ import { UniversiteComponent } from './pages/admin/universite/universite.compone
 import { AddUniversiteComponent } from './pages/admin/universite/add-universite/add-universite.component';
 import { EditUniversiteComponent } from './pages/admin/universite/edit-universite/edit-universite.component';
 import { ShowListEtudiantsComponent } from './pages/admin/departement/show-list-etudiants/show-list-etudiants.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -74,6 +76,10 @@ import { ShowListEtudiantsComponent } from './pages/admin/departement/show-list-
     MatFormFieldModule,
     MatDatepickerModule,
     NgApexchartsModule,
+    FormsModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent],

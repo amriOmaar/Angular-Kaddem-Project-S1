@@ -17,8 +17,10 @@ export class DepartementComponent implements OnInit {
 
   constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
-  departements!: any;
-  etudiants!: any
+  departements: any
+  etudiants: any
+  nomDepartement: any
+  nbrPage: number
 
   ngOnInit(): void {
     this.getDepartements()
@@ -52,6 +54,29 @@ export class DepartementComponent implements OnInit {
 
   openListEtudiantDialog(departement:Object) {
     this.dialog.open(ShowListEtudiantsComponent, { width: '60%', data: { departement}, })
+  }
+
+
+  // searchDepartement(){
+  //   if(this.nomDepartement==""){
+  //     this.ngOnInit();
+  //   }else{
+  //     this.departements=this.departements.filter(
+  //       res => {
+  //         return res.nomDepartement.toLocaleLowerCase().match(this.nomDepartement.toLocaleLowerCase());
+  //       }
+  //     )
+  //   }
+  // }
+
+
+  key: String = ''
+  reverse: boolean = false;
+  sortByNomDepart(key){
+
+    this.key= key
+    this.reverse = !this.reverse
+
   }
 
 
