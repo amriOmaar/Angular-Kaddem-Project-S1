@@ -1,6 +1,6 @@
+import { DepartementService } from './../../../../core/services/admin/departement.service';
 import { DepartementComponent } from './../departement.component';
 import { Departement } from './../../../../core/model/Departement';
-import { ApiService } from './../../../../core/services/admin/api.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddContratComponent } from './../../contrat/add-contrat/add-contrat.component';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -23,7 +23,7 @@ export class AddDepartementComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DepartementComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private apiService: ApiService
+    private departService: DepartementService
     ) {
       this.receivedRow = data;
       this.initForm();
@@ -54,7 +54,6 @@ export class AddDepartementComponent implements OnInit {
   onSubmit() {
     const departementToAdd = {
       nomDepart: this.departementForm.value.nomDepart,
-      chefDepart: this.departementForm.value.chefDepart,
     };
     this.addDepartement(departementToAdd);
     this.resetControls();
@@ -63,7 +62,7 @@ export class AddDepartementComponent implements OnInit {
   }
 
   addDepartement(departBody: Object) {
-    this.apiService.add('addDepart', departBody).subscribe((departement) => null);
+    this.departService.add('addDepart', departBody).subscribe((departement) => null);
   }
 
   resetControls() {

@@ -1,4 +1,4 @@
-import { ApiService } from 'src/app/core/services/admin/api.service';
+import { DepartementService } from './../../../../core/services/admin/departement.service';
 import { DepartementComponent } from './../departement.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -17,21 +17,21 @@ export class ShowListEtudiantsComponent implements OnInit {
   constructor(
     public MatDialogRef: MatDialogRef<DepartementComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private apiService: ApiService
+    private DepartService: DepartementService
   ) {
     this.receivedRow = data
 
   }
 
   ngOnInit(): void {
-    this.getEtudiatnByDepartement(this.receivedRow.departement.idDepart)
+    this.getEtudiatnByDepartement(this.receivedRow.departement.id)
   }
 
-  getEtudiatnByDepartement(idDepart: number) {
-    this.apiService
-      .get('getEtudiantsByDepartement/' + idDepart)
+  getEtudiatnByDepartement(id: number) {
+    this.DepartService
+      .get('getEtudiantsByDepartement/' + id)
       .subscribe((etudiants) => this.etudiants = etudiants)
   }
-  
+
 
 }

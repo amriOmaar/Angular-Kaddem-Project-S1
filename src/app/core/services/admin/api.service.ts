@@ -9,24 +9,21 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
   get(target: string) {
-    return this.httpClient.get(env.apiRoot + target);
+    return this.httpClient.get(env.PathRoot + target);
   }
 
   add(target: string, requestBody: Object) {
-    return this.httpClient.post(env.apiRoot + target, requestBody);
+    return this.httpClient.post(env.PathRoot + target, requestBody);
   }
 
   delete(target: string, elementId: number) {
-    return this.httpClient.delete(env.apiRoot + target + '/' + elementId);
+    return this.httpClient.delete(env.PathRoot + target + '/' + elementId);
   }
 
   update(target: string, elementId: number, requestBody: Object) {
     return this.httpClient.put(
-      env.apiRoot + target + '/' + elementId, requestBody
+      env.PathRoot + target + '/' + elementId,
+      requestBody
     );
-
-
-
-
   }
 }

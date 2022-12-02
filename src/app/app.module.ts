@@ -1,3 +1,4 @@
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -72,6 +73,7 @@ import { ShowListEtudiantsComponent } from './pages/admin/departement/show-list-
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

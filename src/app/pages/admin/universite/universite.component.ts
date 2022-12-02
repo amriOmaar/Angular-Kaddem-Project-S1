@@ -1,5 +1,5 @@
+import { DepartementService } from './../../../core/services/admin/departement.service';
 import { EditUniversiteComponent } from './edit-universite/edit-universite.component';
-import { ApiService } from './../../../core/services/admin/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { AddUniversiteComponent } from './add-universite/add-universite.component';
@@ -11,7 +11,7 @@ import { AddUniversiteComponent } from './add-universite/add-universite.componen
 })
 export class UniversiteComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) { }
+  constructor(private departService: DepartementService, private dialog: MatDialog) { }
 
   universites!: any;
 
@@ -21,13 +21,13 @@ export class UniversiteComponent implements OnInit {
 
 
   getUniversites() {
-    this.apiService
+    this.departService
       .get('universites')
       .subscribe((universites) => (this.universites = universites));
   }
 
   deleteUniversite(elementId: number) {
-    this.apiService
+    this.departService
       .delete('deleteUniversite/', elementId)
       .subscribe(() => location.reload());
   }

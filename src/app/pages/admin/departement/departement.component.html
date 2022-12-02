@@ -1,28 +1,36 @@
 <section class="section" style="margin-top: 100px">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-8 offset-md-3">
       <div class="card">
         <div class="card-body">
 
 
-          <a class="nav-link collapsed">
+
+
+          <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns mt-4 ">
             <i class="fa-solid fa-building fa-lg padding__right__fa"></i>
-            <span>Departement</span>
-          </a>
 
 
+                <div class="dataTable-bottom">
+                  <button
+                    (click)="openAddDepartementDialog()"
+                    mat-raised-button=""
+                    color="primary"
+                    class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base "
+                    style="float: right;"
+                  >
+                    <span
+                      class="mat-mdc-button-persistent-ripple mdc-button__ripple"
+                    ></span
+                    ><i class="fa-solid fa-plus"></i><span class="mat-mdc-focus-indicator"></span>
+                    <span matripple=""
+                      class="mat-ripple mat-mdc-button-ripple"
+                    ></span
+                    ><span class="mat-mdc-button-touch-target"></span>
+                  </button>
+                </div>
 
-          <!-- Table with stripped rows -->
-          <div
-            class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
-
-            <button (click)="openAddDepartementDialog()" mat-raised-button="" color="primary"
-                class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base">
-                <span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span><span
-                  class="mdc-button__label">Add Departement</span><span class="mat-mdc-focus-indicator"></span><span
-                  matripple="" class="mat-ripple mat-mdc-button-ripple"></span><span
-                  class="mat-mdc-button-touch-target"></span>
-              </button>
+                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
 
             <div class="dataTable-container">
               <table class="table datatable dataTable-table">
@@ -41,15 +49,17 @@
                 </thead>
                 <tbody *ngFor="let departement of departements">
                   <tr>
-                    <td style="color: #256d85"> {{ departement.nomDepart }} </td>
-                    <td style="color: #256d85"><button type="button" (click)="openListEtudiantDialog(departement)" class="btn btn-outline-success"><i
-                      class="fas fa-users	"></i></button></td>
+                    <td class="text-xl-center" style="color: #256d85"> {{ departement.nomDepart }} </td>
+                    <td style="color: #256d85"><button type="button"
+                      (click)="openListEtudiantDialog(departement)" class="btn btn-outline-success">
+                      <i class="fas fa-user-graduate"></i>
+                    </button></td>
 
-                    <td style="display: flex; gap: 8px">
+                    <td style="display: flex; gap: 8px;">
                       <button
 
                         mat-fab
-                        (click)="deleteDepartement(departement.idDepart)"
+                        (click)="deleteDepartement(departement.id)"
 
                         style="
                           width: 30px;
@@ -81,8 +91,6 @@
                       >
                         <i style="font-size: 12px" class="bi bi-gear"></i>
                       </button>
-
-
                     </td>
                     <td></td>
                   </tr>
@@ -91,7 +99,7 @@
             </div>
 
           </div>
-          <!-- End Table with stripped rows -->
+        </div>
         </div>
       </div>
     </div>
