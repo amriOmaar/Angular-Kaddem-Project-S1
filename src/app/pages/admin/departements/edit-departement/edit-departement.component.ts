@@ -1,10 +1,7 @@
 import { DepartementService } from './../../../../core/services/admin/departement.service';
-import { Validators } from '@angular/forms';
-import { ApiService } from './../../../../core/services/admin/api.service';
-import { DepartementComponent } from './../departement.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
+import { DepartementsComponent } from './../departements.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
@@ -20,7 +17,7 @@ export class EditDepartementComponent implements OnInit {
   receivedRow: any;
 
   constructor(
-    public dialogRef: MatDialogRef<DepartementComponent>,
+    public dialogRef: MatDialogRef<DepartementsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private departService: DepartementService) {
 
@@ -66,7 +63,6 @@ export class EditDepartementComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
-
 
 
 

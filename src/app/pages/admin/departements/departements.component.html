@@ -1,6 +1,6 @@
 <section class="section" style="margin-top: 100px">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-8 offset-md-3">
       <div class="card">
         <div class="card-header  p-1 m-0 d-flex align-items-center">
           <div class="row justify-content-start">
@@ -49,11 +49,15 @@
                   </tr>
                 </thead>
                 <tbody *ngFor="let departement of departements  | filter:nomDepartement
-                | paginate: { itemsPerPage: 3, currentPage: nbrPage }">
+                | paginate: { itemsPerPage: 4, currentPage: nbrPage }">
                   <tr>
                     <td style="color: #256d85">{{ departement.nomDepart }}</td>
-                    <td style="color: #256d85"><button type="button" (click)="openListEtudiantDialog(departement)" class="btn btn-outline-success"><i
-                          class="fas fa-users	"></i></button></td>
+
+                    <td style="color: #256d85">
+                      <button type="button" (click)="openListEtudiantDialog(departement)"
+                        class="btn btn-outline-success">
+                        <i class="fa fa-graduation-cap"></i>
+                      </button></td>
 
 
                     <td style="display: flex; gap: 8px;" class="mt-2">
