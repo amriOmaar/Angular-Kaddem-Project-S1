@@ -33,6 +33,7 @@ export class DepartementsComponent implements OnInit {
   }
 
 
+
   deleteDepartement(elementId: number) {
     this.DepartService
       .delete('deleteDepart', elementId)

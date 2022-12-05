@@ -34,4 +34,12 @@ export class ShowListEtudiantsComponent implements OnInit {
       .subscribe((etudiants) => this.etudiants = etudiants)
   }
 
+  deleteEtudiant(elementId: number) {
+    this.DepartService
+      .delete('deleteEtudiant', elementId)
+      .subscribe(() => {})
+      location.reload()
+      ;
+  }
+
 }
