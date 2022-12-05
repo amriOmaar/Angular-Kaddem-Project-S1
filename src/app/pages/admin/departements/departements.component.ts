@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddDepartementComponent } from './add-departement/add-departement.component';
 import { EditDepartementComponent } from './edit-departement/edit-departement.component';
 import { ShowListEtudiantsComponent } from './show-list-etudiants/show-list-etudiants.component';
+import { type } from 'os';
 
 @Component({
   selector: 'app-departements',
@@ -55,6 +56,24 @@ export class DepartementsComponent implements OnInit {
     this.dialog.open(ShowListEtudiantsComponent, { width: '60%', data: { departement}, })
   }
 
+  exportPDF() {
+    this.DepartService
+      .exportPDF('exportPDF/')
+      .subscribe(x =>{
+          const blob = new Blob([x], {type: 'application/pdf'});
+          const data = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = data;
+          link.download = 'departements.pdf';
+          link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
+
+          setTimeout(function() {
+            window.URL.revokeObjectURL(data);
+            link.remove();
+          }, 100 );
+      })
+  }
+
 
   // searchDepartement(){
   //   if(this.nomDepartement==""){
@@ -69,13 +88,12 @@ export class DepartementsComponent implements OnInit {
   // }
 
 
-  key: String = ''
-  reverse: boolean = false;
-  sortByNomDepart(key){
+  // key: String = ''
+  // reverse: boolean = false;
+  // sortByNomDepart(key){
+  //   this.key= key
+  //   this.reverse = !this.reverse
 
-    this.key= key
-    this.reverse = !this.reverse
-
-  }
+  // }
 
 }

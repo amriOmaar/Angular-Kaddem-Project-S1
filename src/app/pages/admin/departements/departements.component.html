@@ -10,6 +10,8 @@
         </div>
 
         <div class="card-body">
+
+
           <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
             <div class="dataTable-bottom">
               <div class="input-group">
@@ -22,8 +24,18 @@
                 </button>
               </div>
               <button
+                (click)="exportPDF()" mat-raised-button="" color="primary"
+                class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base m-2"
+                style="float: right;" >
+                <span class="mat-mdc-button-persistent-ripple mdc-button__ripple">
+                </span>
+                <span class="mat-mdc-focus-indicator"> PDF </span>
+                <span matripple="" class="mat-ripple mat-mdc-button-ripple"></span
+                ><span class="mat-mdc-button-touch-target"></span>
+              </button>
+              <button
                   (click)="openAddDepartementDialog()" mat-raised-button="" color="primary"
-                  class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base "
+                  class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base m-2"
                   style="float: right;" >
                   <span class="mat-mdc-button-persistent-ripple mdc-button__ripple">
                   </span>
