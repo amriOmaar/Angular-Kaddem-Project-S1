@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'contrat', component: ContratComponent },
   { path: 'departement', component: DepartementComponent },
+  { path: 'departements', loadChildren: () => import('./pages/admin/departements/departements.module').then(m => m.DepartementsModule) },
   { path: 'universite', component: UniversiteComponent },
   { path: 'addcontrat', component: AddContratComponent },
   { path: 'equipe', component: EquipeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'departements', loadChildren: () => import('./pages/admin/departements/departements.module').then(m => m.DepartementsModule) },
   { path: '**', component: ErrorComponent },
 ];
 

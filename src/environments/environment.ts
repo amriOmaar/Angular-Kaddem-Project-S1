@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'http://localhost:8080/',
+  PathRoot: 'http://localhost:8080/',
 };
 
 /*

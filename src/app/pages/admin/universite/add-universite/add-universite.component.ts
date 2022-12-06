@@ -1,5 +1,5 @@
+import { DepartementService } from './../../../../core/services/admin/departement.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ApiService } from './../../../../core/services/admin/api.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,8 +13,9 @@ export class AddUniversiteComponent implements OnInit {
   nomUniv!: FormControl;
 
   constructor(
-    private apiService: ApiService,
-    public dialogRef: MatDialogRef<AddUniversiteComponent>) { }
+    private DepartService: DepartementService,
+    public dialogRef: MatDialogRef<AddUniversiteComponent>,
+    private departService: DepartementService) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +32,7 @@ export class AddUniversiteComponent implements OnInit {
 
   onSubmit() {
     const universiteToAdd = {
-      nomDepart: this.universiteForm.value.nomUniv,
+      nomUniv: this.universiteForm.value.nomUniv,
     };
     this.addUniversite(universiteToAdd);
     this.resetControls();
@@ -40,7 +41,7 @@ export class AddUniversiteComponent implements OnInit {
   }
 
   addUniversite(universiteBody: Object) {
-    this.apiService.add('addUniv', universiteBody).subscribe((universite) => null);
+    this.departService.add('addUniv', universiteBody).subscribe((universite) => null);
   }
 
   resetControls() {

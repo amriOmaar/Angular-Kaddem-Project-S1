@@ -1,3 +1,5 @@
+import { Departement } from './../../../core/model/Departement';
+import { ShowListEtudiantsComponent } from './show-list-etudiants/show-list-etudiants.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EditDepartementComponent } from './edit-departement/edit-departement.component';
 import { EditContratComponent } from './../contrat/edit-contrat/edit-contrat.component';
@@ -15,7 +17,10 @@ export class DepartementComponent implements OnInit {
 
   constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
-  departements!: any;
+  departements: any
+  etudiants: any
+  nomDepartement: any
+  nbrPage: number
 
   ngOnInit(): void {
     this.getDepartements()
@@ -27,10 +32,13 @@ export class DepartementComponent implements OnInit {
       .subscribe((departements) => (this.departements = departements));
   }
 
+
   deleteDepartement(elementId: number) {
     this.apiService
-      .delete('delete/', elementId)
-      .subscribe(() => location.reload());
+      .delete('deleteDepart', elementId)
+      .subscribe(() => {})
+      location.reload()
+      ;
   }
 
   openAddDepartementDialog() {
@@ -43,5 +51,33 @@ export class DepartementComponent implements OnInit {
       data: { departement },
     });
   }
+
+  openListEtudiantDialog(departement:Object) {
+    this.dialog.open(ShowListEtudiantsComponent, { width: '60%', data: { departement}, })
+  }
+
+
+  // searchDepartement(){
+  //   if(this.nomDepartement==""){
+  //     this.ngOnInit();
+  //   }else{
+  //     this.departements=this.departements.filter(
+  //       res => {
+  //         return res.nomDepartement.toLocaleLowerCase().match(this.nomDepartement.toLocaleLowerCase());
+  //       }
+  //     )
+  //   }
+  // }
+
+
+  key: String = ''
+  reverse: boolean = false;
+  sortByNomDepart(key){
+
+    this.key= key
+    this.reverse = !this.reverse
+
+  }
+
 
 }

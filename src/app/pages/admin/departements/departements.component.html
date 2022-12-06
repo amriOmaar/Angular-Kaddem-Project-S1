@@ -1,6 +1,6 @@
 <section class="section" style="margin-top: 100px">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
+    <div class="col-md-8 offset-md-3">
       <div class="card">
         <div class="card-header  p-1 m-0 d-flex align-items-center">
           <div class="row justify-content-start">
@@ -10,20 +10,29 @@
         </div>
 
         <div class="card-body">
+
+
           <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
             <div class="dataTable-bottom">
-              <div class="input-group">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control"
-                  [(ngModel)]="nomDepartement">
-                </div>
-                <button type="button" class="btn btn-primary">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Rechercher un departement</mat-label>
+                <input matInput  [(ngModel)]="nomDepartement">
+                <mat-icon style="color: navy" matSuffix>search</mat-icon>
+              </mat-form-field>
+              <button
+                (click)="exportPDF()" mat-raised-button="" color="primary"
+                class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base m-2"
+                style="float: right;" >
+                <span class="mat-mdc-button-persistent-ripple mdc-button__ripple">
+                </span>
+                <span class="mat-mdc-focus-indicator"> <i class="fa fa-file-pdf"></i> </span>
+                <span matripple="" class="mat-ripple mat-mdc-button-ripple"></span
+                ><span class="mat-mdc-button-touch-target"></span>
+              </button>
               <button
                   (click)="openAddDepartementDialog()" mat-raised-button="" color="primary"
-                  class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base "
+                  class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base m-2"
                   style="float: right;" >
                   <span class="mat-mdc-button-persistent-ripple mdc-button__ripple">
                   </span>
@@ -49,11 +58,15 @@
                   </tr>
                 </thead>
                 <tbody *ngFor="let departement of departements  | filter:nomDepartement
-                | paginate: { itemsPerPage: 3, currentPage: nbrPage }">
+                | paginate: { itemsPerPage: 4, currentPage: nbrPage }">
                   <tr>
                     <td style="color: #256d85">{{ departement.nomDepart }}</td>
-                    <td style="color: #256d85"><button type="button" (click)="openListEtudiantDialog(departement)" class="btn btn-outline-success"><i
-                          class="fas fa-users	"></i></button></td>
+
+                    <td style="color: #256d85">
+                      <button type="button" (click)="openListEtudiantDialog(departement)"
+                        class="btn btn-outline-success">
+                        <i class="fa fa-graduation-cap"></i>
+                      </button></td>
 
 
                     <td style="display: flex; gap: 8px;" class="mt-2">
@@ -67,6 +80,7 @@
                         color="accent" aria-label="Example icon button with a delete icon">
                         <i style="font-size: 12px" class="bi bi-gear"></i>
                       </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>
