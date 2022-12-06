@@ -16,7 +16,6 @@ import { EditDepartementComponent } from './edit-departement/edit-departement.co
 import { ShowListEtudiantsComponent } from './show-list-etudiants/show-list-etudiants.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
-
 @NgModule({
   declarations: [
     DepartementsComponent,

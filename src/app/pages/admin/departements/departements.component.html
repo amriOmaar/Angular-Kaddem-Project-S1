@@ -14,15 +14,12 @@
 
           <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
             <div class="dataTable-bottom">
-              <div class="input-group">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control"
-                  [(ngModel)]="nomDepartement">
-                </div>
-                <button type="button" class="btn btn-primary">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Rechercher un departement</mat-label>
+                <input matInput  [(ngModel)]="nomDepartement">
+                <mat-icon style="color: navy" matSuffix>search</mat-icon>
+              </mat-form-field>
               <button
                 (click)="exportPDF()" mat-raised-button="" color="primary"
                 class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base m-2"
