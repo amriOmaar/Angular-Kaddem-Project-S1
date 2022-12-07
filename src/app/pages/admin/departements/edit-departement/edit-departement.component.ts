@@ -10,10 +10,8 @@ import { Component, Inject, OnInit } from '@angular/core';
   styleUrls: ['./edit-departement.component.css']
 })
 export class EditDepartementComponent implements OnInit {
-
   departementForm!: FormGroup;
   nomDepart!: FormControl;
-
   receivedRow: any;
 
   constructor(

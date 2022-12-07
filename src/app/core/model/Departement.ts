@@ -1,6 +1,6 @@
 export class Departement{
 
-  idDepart: number
+  id: number
   nomDepart: string
 
 }
