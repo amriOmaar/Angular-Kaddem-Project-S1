@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../../core/services/admin/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContratComponent } from '../contrat.component';
+import { Contrat } from 'src/app/core/model/contrat';
 
 @Component({
   selector: 'app-add-contrat',
@@ -11,11 +12,10 @@ import { ContratComponent } from '../contrat.component';
 })
 export class AddContratComponent implements OnInit {
   contratForm!: FormGroup;
-  dateDebut!: FormControl;
-  dateFin!: FormControl;
+  dateDebutContrat!: FormControl;
+  dateFinContrat!: FormControl;
   specialite!: FormControl;
-  archivee!: FormControl;
-  montant!: FormControl;
+  archive!: FormControl;
 
   constructor(
     private apiService: ApiService,
@@ -28,30 +28,27 @@ export class AddContratComponent implements OnInit {
   ngOnInit(): void {}
 
   initForm() {
-    this.dateDebut = new FormControl('', [Validators.required]);
-    this.dateFin = new FormControl('', [Validators.required]);
+    this.dateDebutContrat = new FormControl('', [Validators.required]);
+    this.dateFinContrat = new FormControl('', [Validators.required]);
     this.specialite = new FormControl('', [Validators.required]);
-    this.archivee = new FormControl('');
-    this.montant = new FormControl('', [Validators.required]);
+    this.archive = new FormControl('');
   }
 
   createForm() {
     this.contratForm = new FormGroup({
-      dateDebut: this.dateDebut,
-      dateFin: this.dateFin,
+      dateDebutContrat: this.dateDebutContrat,
+      dateFinContrat: this.dateFinContrat,
       specialite: this.specialite,
-      archivee: this.archivee,
-      montant: this.montant,
+      archive: this.archive,
     });
   }
 
   onSubmit() {
     const contratToAdd = {
-      dateDebutContrat: this.contratForm.value.dateDebut,
-      dateFinContrat: this.contratForm.value.dateFin,
+      dateDebutContrat: this.contratForm.value.dateDebutContrat,
+      dateFinContrat: this.contratForm.value.dateFinContrat,
       specialite: this.contratForm.value.specialite,
-      archive: this.contratForm.value.archivee,
-      montantContrat: this.contratForm.value.montant,
+      archive: this.contratForm.value.archive,
     };
     this.addContrat(contratToAdd);
     this.resetControls();
@@ -60,7 +57,7 @@ export class AddContratComponent implements OnInit {
   }
 
   addContrat(contratBody: Object) {
-    this.apiService.add('addContrat', contratBody).subscribe((contrat) => null);
+    this.apiService.add('AddContrat', contratBody).subscribe((contrat) => null);
   }
 
   resetControls() {

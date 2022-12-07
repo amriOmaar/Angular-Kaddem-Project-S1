@@ -1,4 +1,4 @@
-<h2 class="card-title">Edit Contrat</h2>
+<h2 class="card-title">Modifier un Contrat</h2>
 
 <form class="row g-3" [formGroup]="contratForm">
   <div class="col-6 offset-3">
@@ -7,22 +7,22 @@
       tabindex="-1"
       type="date"
       class="form-control position-relative"
-      formControlName="dateDebut"
+      formControlName="dateDebutContrat"
       [ngClass]="{
-        'input-invalid': dateDebut.touched && dateDebut.invalid,
-        'input-valid': dateDebut.touched && dateDebut.valid
+        'input-invalid': dateDebutContrat.touched && dateDebutContrat.invalid,
+        'input-valid': dateDebutContrat.touched && dateDebutContrat.valid
       }"
     />
     <!--error message-->
     <div
       class="message-invalid"
-      *ngIf="dateDebut.touched && dateDebut.hasError('required')"
+      *ngIf="dateDebutContrat.touched && dateDebutContrat.hasError('required')"
     >
-      Date Debut Is Required
+      Date Debut obligatoire
     </div>
     <!--success message-->
-    <div class="message-valid" *ngIf="dateDebut.touched && !dateDebut.errors">
-      Looks good!
+    <div class="message-valid" *ngIf="dateDebutContrat.touched && !dateDebutContrat.errors">
+      parfait
     </div>
   </div>
   <div class="col-6 offset-3">
@@ -31,36 +31,36 @@
       tabindex="-1"
       type="date"
       class="form-control"
-      formControlName="dateFin"
+      formControlName="dateFinContrat"
       [ngClass]="{
         'input-invalid':
-          (dateFin.touched && dateFin.invalid) ||
-          (dateFin.touched && dateFin.value <= dateDebut.value),
+          (dateFinContrat.touched && dateFinContrat.invalid) ||
+          (dateFinContrat.touched && dateFinContrat.value <= dateDebutContrat.value),
         'input-valid':
-          dateFin.touched && dateFin.valid && dateFin.value > dateDebut.value
+          dateFinContrat.touched && dateFinContrat.valid && dateFinContrat.value > dateDebutContrat.value
       }"
     />
     <!--error message-->
     <div
       class="message-invalid"
-      *ngIf="dateFin.touched && dateFin.hasError('required')"
+      *ngIf="dateFinContrat.touched && dateFinContrat.hasError('required')"
     >
-      Date Fin Is Required
+      Date Fin obligatoire
     </div>
     <div
       class="message-invalid"
-      *ngIf="dateFin.touched && dateFin.value <= dateDebut.value"
+      *ngIf="dateFinContrat.touched && dateFinContrat.value <= dateDebutContrat.value"
     >
-      Date Fin Must Be Greater Than Date Debut
+      Date Fin  doit etre superieur au Date Debut
     </div>
     <!--success message-->
     <div
       class="message-valid"
       *ngIf="
-        dateFin.touched && !dateFin.errors && dateFin.value > dateDebut.value
+        dateFinContrat.touched && !dateFinContrat.errors && dateFinContrat.value > dateDebutContrat.value
       "
     >
-      Looks good!
+     parfait
     </div>
   </div>
   <div class="col-6 offset-3">
@@ -70,6 +70,7 @@
         'input-invalid': specialite.touched && specialite.invalid,
         'input-valid': specialite.touched && specialite.valid
       }"
+     
       class="form-select"
       tabindex="-1"
       aria-label="Default select example"
@@ -84,11 +85,11 @@
       class="message-invalid"
       *ngIf="specialite.touched && specialite.hasError('required')"
     >
-      Specialite Is Required
+      Specialite obligatoire
     </div>
     <!--success message-->
     <div class="message-valid" *ngIf="specialite.touched && !specialite.errors">
-      Looks good!
+      parfait
     </div>
   </div>
   <div class="col-6 offset-3 d-flex gap-4">
@@ -99,38 +100,11 @@
         class="form-check-input"
         type="checkbox"
         id="flexSwitchCheckDefault"
-        formControlName="archivee"
+        formControlName="archive"
       />
     </div>
   </div>
-  <div class="col-6 offset-3">
-    <label class="form-label">Montant</label>
-    <div class="input-group mb-3">
-      <span class="input-group-text">$</span>
-      <input
-        [ngClass]="{
-          'input-invalid': montant.touched && montant.invalid,
-          'input-valid': montant.touched && montant.valid
-        }"
-        tabindex="-1"
-        type="number"
-        class="form-control"
-        aria-label="Amount (to the nearest dollar)"
-        formControlName="montant"
-      />
-      <span class="input-group-text">.00</span>
-      <div
-        class="message-invalid"
-        *ngIf="montant.touched && montant.hasError('required')"
-      >
-        Montant Is Required
-      </div>
-      <!--success message-->
-      <div class="message-valid" *ngIf="montant.touched && !montant.errors">
-        Looks good!
-      </div>
-    </div>
-  </div>
+  
   <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
   <div class="text-center">
     <button
@@ -138,7 +112,7 @@
       type="submit"
       class="btn btn-primary mx-2"
     >
-      <i class="fa-solid fa-pen-nib pe-2"></i>Edit
+      <i class="fa-solid fa-pen-nib pe-2"></i>Modifier
     </button>
     <button
       (click)="resetControls()"
@@ -150,7 +124,7 @@
     </button>
     <button (click)="closeDialog()" type="button" class="btn btn-danger">
       <i class="bi bi-x-circle pe-2"></i>
-      Close
+      Fermer
     </button>
   </div>
 </form>

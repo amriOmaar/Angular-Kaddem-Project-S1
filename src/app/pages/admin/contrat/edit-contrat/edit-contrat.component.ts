@@ -11,11 +11,10 @@ import { ApiService } from '../../../../core/services/admin/api.service';
 })
 export class EditContratComponent implements OnInit {
   contratForm!: FormGroup;
-  dateDebut!: FormControl;
-  dateFin!: FormControl;
+  dateDebutContrat!: FormControl;
+  dateFinContrat!: FormControl;
   specialite!: FormControl;
-  archivee!: FormControl;
-  montant!: FormControl;
+  archive!: FormControl;
 
   receivedRow: any;
 
@@ -32,29 +31,25 @@ export class EditContratComponent implements OnInit {
   ngOnInit(): void {}
 
   initForm() {
-    this.dateDebut = new FormControl(
+    this.dateDebutContrat = new FormControl(
       this.receivedRow.contrat.dateDebutContrat,
       [Validators.required]
     );
-    this.dateFin = new FormControl(this.receivedRow.contrat.dateFinContrat, [
+    this.dateFinContrat = new FormControl(this.receivedRow.contrat.dateFinContrat, [
       Validators.required,
     ]);
     this.specialite = new FormControl(this.receivedRow.contrat.specialite, [
       Validators.required,
     ]);
-    this.archivee = new FormControl(this.receivedRow.contrat.archive);
-    this.montant = new FormControl(this.receivedRow.contrat.montantContrat, [
-      Validators.required,
-    ]);
+    this.archive = new FormControl(this.receivedRow.contrat.archive);
   }
 
   createForm() {
     this.contratForm = new FormGroup({
-      dateDebut: this.dateDebut,
-      dateFin: this.dateFin,
+      dateDebutContrat: this.dateDebutContrat,
+      dateFinContrat: this.dateFinContrat,
       specialite: this.specialite,
-      archivee: this.archivee,
-      montant: this.montant,
+      archive: this.archive,
     });
   }
 
@@ -62,17 +57,16 @@ export class EditContratComponent implements OnInit {
     this.contratForm.reset();
   }
 
-  upadteContrat(contratId: number) {
+  upadteContrat(idContrat: number) {
     const contratUpdated = {
-      idContrat: contratId,
-      dateDebutContrat: this.contratForm.value.dateDebut,
-      dateFinContrat: this.contratForm.value.dateFin,
+      idContrat: idContrat,
+      dateDebutContrat: this.contratForm.value.dateDebutContrat,
+      dateFinContrat: this.contratForm.value.dateFinContrat,
       specialite: this.contratForm.value.specialite,
-      archive: this.contratForm.value.archivee,
-      montantContrat: this.contratForm.value.montant,
+      archive: this.contratForm.value.archive,
     };
     this.apiService
-      .update('updateContrat', contratId, contratUpdated)
+      .update('UpdateContrat', idContrat, contratUpdated)
       .subscribe(() => {
         this.closeDialog();
         location.reload();

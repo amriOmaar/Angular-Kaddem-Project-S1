@@ -35,6 +35,9 @@
                 <thead>
                   <tr>
                     <th scope="col" data-sortable="" style="width: 9.203%">
+                      Etudiant
+                    </th>
+                    <th scope="col" data-sortable="" style="width: 9.203%">
                       Specialite
                     </th>
                     <th scope="col" data-sortable="" style="width: 28.0558%">
@@ -46,15 +49,14 @@
                     <th scope="col" data-sortable="" style="width: 19.2995%">
                       Status
                     </th>
-                    <th scope="col" data-sortable="" style="width: 19.2995%">
-                      Montant
-                    </th>
+                  
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody *ngFor="let contrat of contrats">
                   <tr>
-                    <!--                    <th scope="row">{{ contrat.idContrat }}</th>-->
+                    <td style="color: #256d85">{{ contrat.etudiant|json}}</td>
+
                     <td style="color: #256d85">{{ contrat.specialite }}</td>
                     <td style="color: #7743db">
                       {{ contrat.dateDebutContrat }}
@@ -68,17 +70,12 @@
                     >
                       {{ contrat.archive ? 'Archive' : 'Not Archive' }}
                     </td>
-                    <td>
-                      {{ contrat.montantContrat }}
-                      <i
-                        style="color: green; font-weight: bold"
-                        class="fa-solid fa-dollar-sign"
-                      ></i>
-                    </td>
+                   
                     <td style="display: flex; gap: 8px">
                       <button
+                      class="btn btn-outline-danger "
                         mat-fab
-                        (click)="deleteContrat(contrat.idContrat)"
+                        (click)="deleteContrat(contrat.id)"
                         style="
                           width: 30px;
                           height: 30px;
