@@ -17,9 +17,6 @@ export class AddDepartementComponent implements OnInit {
 
   receivedRow: any;
 
-
-  // pattern1 =  "[a-zA-Z]";
-
   constructor(
     public dialogRef: MatDialogRef<DepartementsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -34,20 +31,14 @@ export class AddDepartementComponent implements OnInit {
   }
 
   initForm() {
-
-    // this.departementForm = this.formBuilder.group({
-    //   // this.nomDepart = new FormControl('', [Validators.required]);
-    //   nomDepart : new FormControl ('', [Validators.required, Validators.pattern('^[a-zA-Z]')])
-
-    // });
-
-   this.nomDepart = new FormControl('', [Validators.required]);
-
+       this.nomDepart = new FormControl('', [Validators.required]);
   }
 
   createForm() {
     this.departementForm = new FormGroup({
-      nomDepart: this.nomDepart,
+      nomDepart: new FormControl('',[Validators.required,
+                                    Validators.pattern("^departement +[a-zA-Z ]*"),
+                                    Validators.minLength(15)])
     });
   }
 
