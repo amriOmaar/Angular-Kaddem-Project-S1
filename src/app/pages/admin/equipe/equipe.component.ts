@@ -13,7 +13,7 @@ import {UpdateEquipeComponent} from "./update-equipe/update-equipe.component";
 })
 export class EquipeComponent implements OnInit {
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
-
+  nomEqui!: any;
   ngOnInit(): void {
     this.getEquipes();
   }
@@ -36,10 +36,10 @@ export class EquipeComponent implements OnInit {
     this.dialog.open(AddEquipeComponent, { width: '40%' });
   }
 
-  openEditEquipeDialog(contrat: Object) {
+  openEditEquipeDialog(equipes: Object) {
     this.dialog.open(UpdateEquipeComponent, {
-      width: '40%',
-      data: { contrat },
+      width: '30%',
+      data: { equipes },
     });
   }
 

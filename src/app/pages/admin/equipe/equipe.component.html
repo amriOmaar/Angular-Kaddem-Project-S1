@@ -3,10 +3,14 @@
 }</style>
 <section class="section" style="margin-top: 100px">
   <div class="row">
+
     <div class="col-md-6 offset-md-3">
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">Equipe</h2>
+          <div class="search-hero">
+            <input class="form-control" type="text" name="search" [(ngModel)]="nomEqui" autocomplete="off" placeholder="&#61442;  search">
+          </div>
 
           <div
             class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"
@@ -25,7 +29,7 @@
                   <th>Action</th>
                 </tr>
                 </thead>
-                <tbody *ngFor="let equipe of equipes">
+                <tbody *ngFor="let equipe of equipes | filter:nomEqui"  >
                 <tr>
 
                   <td style="color: #256d85">{{ equipe.nomEquipe }}</td>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { DetailEquipe } from 'src/app/core/model/DetailEquipe';
 import { ApiService } from 'src/app/core/services/admin/api.service';
 
 @Component({
@@ -8,50 +9,33 @@ import { ApiService } from 'src/app/core/services/admin/api.service';
   templateUrl: './adddetailequipe.component.html',
   styleUrls: ['./adddetailequipe.component.css']
 })
-export class AdddetailequipeComponent implements OnInit {
-  detailequipeForm!: FormGroup;
-  salle!: FormControl;
-  thematique!: FormControl;
+export class AdddetailequipeComponent  implements OnInit{
+  submitted: boolean;
 
+  public detailequipe:DetailEquipe;
   constructor(  private apiService: ApiService,
-    public dialogRef: MatDialogRef<AdddetailequipeComponent>) {  this.initForm();
-      this.createForm();}
-
+    public dialogRef: MatDialogRef<AdddetailequipeComponent>) {  
+      }
   ngOnInit(): void {
+    this.detailequipe= new DetailEquipe()
   }
-  initForm() {
-    ;
-      this.salle = new FormControl('', [Validators.required]);
-      this.thematique = new FormControl('', [Validators.required]);
-    }
+
+
+     
   
-    createForm() {
-      this.detailequipeForm = new FormGroup({
   
-        salle: this.salle,
-        thematique: this.thematique,
-      });
-    }
   
-    onSubmit() {
-      const deatilequipeToAdd = {
-        salle: this.detailequipeForm.value.salle,
-        thematique: this.detailequipeForm.value.thematique,
-      };
-      this.addDetailEquipe(deatilequipeToAdd);
-      this.resetControls();
-      this.closeDialog();
-      location.reload();
+    onSubmit(form : NgForm) {
+ 
+        this.apiService.add('addEquipeDE',this.detailequipe).subscribe((equipe) => null);
+        location.reload()
     }
   
     addDetailEquipe(detailequipeBody: Object) {
       this.apiService.add('addEquipeDE', detailequipeBody).subscribe((detailequipe) => null);
     }
   
-    resetControls() {
-      this.detailequipeForm.reset();
-    }
-  
+
     closeDialog() {
       this.dialogRef.close();
     }

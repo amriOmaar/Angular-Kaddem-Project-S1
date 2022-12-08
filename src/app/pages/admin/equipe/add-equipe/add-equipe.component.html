@@ -12,8 +12,7 @@
     <select
       tabindex="-1"
       [ngClass]="{
-        'input-invalid': niveau.touched && niveau.invalid,
-        'input-valid': niveau.touched && niveau.valid
+        'is-invalid': submitted && f['niveau'].errors
       }"
       class="form-select"
       aria-label="Default select example"
@@ -26,12 +25,12 @@
     </select>
     <div
       class="message-invalid"
-      *ngIf="niveau.touched && niveau.hasError('required')"
+      *ngIf="submitted  && f['niveau'].errors"
     >
       Niveau Is Required
     </div>
     <!--success message-->
-    <div class="message-valid" *ngIf="niveau.touched && !niveau.errors">
+    <div class="message-valid"  *ngIf="submitted  && f['niveau'].errors">
       Looks good!
     </div>
   </div>
@@ -41,8 +40,7 @@
     <div class="input-group mb-3">
       <input
         [ngClass]="{
-          'input-invalid': nomEquipe.touched && nomEquipe.invalid,
-          'input-valid': nomEquipe.touched && nomEquipe.valid
+          'is-invalid': submitted && f['nomEquipe'].errors
         }"
         type="text"
         class="form-control"
@@ -51,12 +49,12 @@
       />
       <div
         class="message-invalid"
-        *ngIf="nomEquipe.touched && nomEquipe.hasError('required')"
+        *ngIf="submitted  && f['nomEquipe'].errors"
       >
         nomEquipe Is Required
       </div>
       <!--success message-->
-      <div class="message-valid" *ngIf="nomEquipe.touched && !nomEquipe.errors">
+      <div class="message-valid"  *ngIf="submitted  && f['nomEquipe'].errors">
         Looks good!
       </div>
     </div>

@@ -14,6 +14,7 @@ import {EquipeComponent} from "./pages/admin/equipe/equipe.component";
 import {AddEquipeComponent} from "./pages/admin/equipe/add-equipe/add-equipe.component";
 import { DetailequipeComponent } from './pages/admin/detailequipe/detailequipe.component';
 import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetailequipe/adddetailequipe.component';
+import { UpdateEquipeComponent } from './pages/admin/equipe/update-equipe/update-equipe.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -21,8 +22,11 @@ const routes: Routes = [
   { path: 'departement', component: DepartementComponent },
   { path: 'universite', component: UniversiteComponent },
   { path: 'addcontrat', component: AddContratComponent },
-  { path: 'equipe', component: EquipeComponent },
-  { path: 'addequipe', component: AddEquipeComponent },
+  { path: 'equipe', component: EquipeComponent , children:[
+    { path: 'addequipe', component: AddEquipeComponent, },
+    {path:'updateequipe',component:UpdateEquipeComponent  }
+  ] },
+ 
   { path: 'detailequipe', component: DetailequipeComponent },
   { path: 'adddetailequipe', component: AdddetailequipeComponent },
   { path: 'register', component: RegisterComponent },

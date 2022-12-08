@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../../core/services/admin/api.service";
 import {MatDialogRef} from "@angular/material/dialog";
 
@@ -11,53 +11,48 @@ import {MatDialogRef} from "@angular/material/dialog";
 export class AddEquipeComponent implements OnInit {
 
   equipeForm!: FormGroup;
-  niveau!: FormControl;
-  nomEquipe!: FormControl;
 
+  submitted= false;
   constructor(
     private apiService: ApiService,
-    public dialogRef: MatDialogRef<AddEquipeComponent>
+    public dialogRef: MatDialogRef<AddEquipeComponent>,
+    private fb:FormBuilder
   ) {
-    this.initForm();
-    this.createForm();
+  
   }
 
-  ngOnInit(): void {}
-
-  initForm() {
-  ;
-    this.niveau = new FormControl('', [Validators.required]);
-    this.nomEquipe = new FormControl('', [Validators.required]);
+  ngOnInit(): void {
+    this.equipeForm =this.fb.group({
+    
+      niveau:['', Validators.required] , 
+      nomEquipe:['', Validators.required],
+    })
   }
 
-  createForm() {
-    this.equipeForm = new FormGroup({
+  get f(){return this.equipeForm.controls}
 
-      niveau: this.niveau,
-      nomEquipe: this.nomEquipe,
-    });
-  }
+  
 
   onSubmit() {
-    const equipeToAdd = {
-      niveau: this.equipeForm.value.niveau,
-      nomEquipe: this.equipeForm.value.nomEquipe,
-    };
-    this.addEquipe(equipeToAdd);
-    this.resetControls();
-    this.closeDialog();
-    location.reload();
+    this.submitted = true;
+    if(this.equipeForm.invalid){
+      return;
+    }else{
+      console.log(this.equipeForm.value)
+      this.apiService.add('addEquipe', this.equipeForm.value).subscribe((equipe) => null);
+      location.reload()}
+    
   }
 
-  addEquipe(equipeBody: Object) {
-    this.apiService.add('addEquipe', equipeBody).subscribe((equipe) => null);
-  }
+  
 
   resetControls() {
+    this.submitted = false;
     this.equipeForm.reset();
   }
 
   closeDialog() {
+    this.submitted = false;
     this.dialogRef.close();
   }
 

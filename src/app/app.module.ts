@@ -10,7 +10,7 @@ import { ContactComponent } from './pages/admin/contact/contact.component';
 import { ProfileComponent } from './pages/admin/profile/profile.component';
 import { ContratComponent } from './pages/admin/contrat/contrat.component';
 import { AdminComponentsModule } from './components/admin-components/admin-components.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddContratComponent } from './pages/admin/contrat/add-contrat/add-contrat.component';
 import { EquipeComponent } from './pages/admin/equipe/equipe.component';
@@ -35,6 +35,7 @@ import { AddUniversiteComponent } from './pages/admin/universite/add-universite/
 import { EditUniversiteComponent } from './pages/admin/universite/edit-universite/edit-universite.component';
 import { DetailequipeComponent } from './pages/admin/detailequipe/detailequipe.component';
 import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetailequipe/adddetailequipe.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetaileq
     EditUniversiteComponent,
     DetailequipeComponent,
     AdddetailequipeComponent,
+    UpdateEquipeComponent,
 
   ],
   imports: [
@@ -74,6 +76,9 @@ import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetaileq
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    Ng2SearchPipeModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

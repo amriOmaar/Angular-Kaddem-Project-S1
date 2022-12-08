@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../../../environments/environment';
+import { Observable } from 'rxjs';
+import { Equipe } from '../../model/Equipe';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  private apiServerUrl = '';
   constructor(private httpClient: HttpClient) {}
 
+ 
+  
   get(target: string) {
     return this.httpClient.get(env.apiRoot + target);
   }

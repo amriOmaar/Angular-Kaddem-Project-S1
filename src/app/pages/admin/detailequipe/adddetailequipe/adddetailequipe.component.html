@@ -1,6 +1,6 @@
 <h2 class="card-title">Add Detail Equipe</h2>
 <!-- Vertical Form -->
-<form class="row g-3" [formGroup]="detailequipeForm" (ngSubmit)="onSubmit()">
+<form class="row g-3" #detailForm="ngForm"        (ngSubmit)="onSubmit(detailForm)" novalidate>
   <div class="col-6 offset-3">
 
     <div class="col-6 offset-3">
@@ -8,22 +8,24 @@
         <div class="input-group mb-3">
           <input
             [ngClass]="{
-              'input-invalid': salle.touched && salle.invalid,
-              'input-valid': salle.touched && salle.valid
+              'input-invalid': t.touched && t.invalid,
+              'input-valid': t.touched && t.valid
             }"
             type="text"
             class="form-control"
-            formControlName="salle"
+            [(ngModel)]="detailequipe.salle"
+            name="something"
+            #t="ngModel"
             tabindex="-1"
           />
           <div
             class="message-invalid"
-            *ngIf="salle.touched && salle.hasError('required')"
+            *ngIf="t.hasError('Required')"
           >
           salle Is Required
           </div>
           <!--success message-->
-          <div class="message-valid" *ngIf="salle.touched && !salle.errors">
+          <div class="message-valid" *ngIf="t.touched && t.errors">
             Looks good!
           </div>
         </div>
@@ -34,22 +36,24 @@
     <div class="input-group mb-3">
       <input
         [ngClass]="{
-          'input-invalid': thematique.touched && thematique.invalid,
-          'input-valid': thematique.touched && thematique.valid
+          'input-invalid': s.touched && s.invalid,
+          'input-valid': s.touched && s.valid
         }"
         type="text"
         class="form-control"
-        formControlName="thematique"
+        [(ngModel)]="detailequipe.thematique"
+        name="something"
+        #s="ngModel"
         tabindex="-1"
       />
       <div
         class="message-invalid"
-        *ngIf="thematique.touched && thematique.hasError('required')"
+        *ngIf="s.errors"
       >
       thematique Is Required
       </div>
       <!--success message-->
-      <div class="message-valid" *ngIf="thematique.touched && !thematique.errors">
+      <div class="message-valid" *ngIf="s.touched && s.errors">
         Looks good!
       </div>
     </div>
@@ -59,14 +63,7 @@
     <button type="submit" class="btn btn-primary mx-2">
       <i class="fa-regular fa-floppy-disk pe-2"></i>Save
     </button>
-    <button
-      type="button"
-      class="btn btn-warning mx-2"
-      (click)="resetControls()"
-    >
-      <i class="fa-solid fa-broom pe-2"></i>
-      Reset
-    </button>
+   
     <button
       (click)="closeDialog()"
       type="button"
