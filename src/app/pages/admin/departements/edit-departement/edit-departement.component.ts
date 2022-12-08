@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { DepartementService } from './../../../../core/services/admin/departement.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DepartementsComponent } from './../departements.component';
@@ -17,7 +18,8 @@ export class EditDepartementComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DepartementsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private departService: DepartementService) {
+    private departService: DepartementService,
+    private toastrService: ToastrService) {
 
     this.receivedRow = data;
     this.initForm();
@@ -53,8 +55,10 @@ export class EditDepartementComponent implements OnInit {
     this.departService
       .update('updateDepart', idDepart, departementUpdated)
       .subscribe(() => {
+        this.toastrService.success("Departement bien modifié")
         this.closeDialog();
         location.reload();
+
       });
   }
 

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { DepartementService } from './../../../core/services/admin/departement.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ import { type } from 'os';
 export class DepartementsComponent implements OnInit {
 
   constructor(private DepartService: DepartementService,
-              private dialog: MatDialog)
+              private dialog: MatDialog,
+              private toastrService: ToastrService)
               { }
 
   departements: any
@@ -38,6 +40,7 @@ export class DepartementsComponent implements OnInit {
     this.DepartService
       .delete('deleteDepart', elementId)
       .subscribe(() => {})
+      this.toastrService.success("Departement bien Supprimé")
       location.reload()
       ;
   }

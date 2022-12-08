@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DepartementsComponent } from './../departements.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-departement',
@@ -14,13 +15,13 @@ export class AddDepartementComponent implements OnInit {
 
   departementForm!: FormGroup;
   nomDepart!: FormControl;
-
   receivedRow: any;
 
   constructor(
     public dialogRef: MatDialogRef<DepartementsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private departService: DepartementService
+    private departService: DepartementService,
+    private toastrService: ToastrService
     ) {
       this.receivedRow = data;
       this.initForm();
@@ -47,6 +48,7 @@ export class AddDepartementComponent implements OnInit {
       nomDepart: this.departementForm.value.nomDepart,
     };
     this.addDepartement(departementToAdd);
+    this.toastrService.success("Departement bien ajouté")
     this.resetControls();
     this.closeDialog();
     location.reload();

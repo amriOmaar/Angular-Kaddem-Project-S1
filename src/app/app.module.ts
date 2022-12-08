@@ -1,3 +1,4 @@
+import { ToastrModule } from 'ngx-toastr';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -80,8 +81,9 @@ import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/c
     NgApexchartsModule,
     FormsModule,
     Ng2SearchPipeModule,
-    Ng2OrderModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

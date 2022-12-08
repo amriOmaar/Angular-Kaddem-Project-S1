@@ -10,11 +10,8 @@
         </div>
 
         <div class="card-body">
-
-
           <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
             <div class="dataTable-bottom">
-
               <mat-form-field appearance="outline">
                 <mat-label>Rechercher un departement</mat-label>
                 <input matInput  [(ngModel)]="nomDepartement">
@@ -58,7 +55,7 @@
                   </tr>
                 </thead>
                 <tbody *ngFor="let departement of departements  | filter:nomDepartement
-                | paginate: { itemsPerPage: 4, currentPage: nbrPage }">
+                | paginate: { itemsPerPage: 3, currentPage: nbrPage }">
                   <tr>
                     <td style="color: #256d85">{{ departement.nomDepart }}</td>
 
@@ -67,7 +64,6 @@
                         class="btn btn-outline-success">
                         <i class="fa fa-graduation-cap"></i>
                       </button></td>
-
 
                     <td style="display: flex; gap: 8px;" class="mt-2">
                       <button mat-fab (click)="deleteDepartement(departement.id)"
@@ -85,7 +81,7 @@
                 </tbody>
               </table>
 
-              <pagination-controls (pageChange)="nbrPage = $event"></pagination-controls>
+              <pagination-controls (pageChange)="nbrPage=$event"></pagination-controls>
 
             </div>
           </div>

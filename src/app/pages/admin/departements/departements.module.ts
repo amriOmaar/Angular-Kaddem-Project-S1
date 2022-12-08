@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,6 +16,7 @@ import { AddDepartementComponent } from './add-departement/add-departement.compo
 import { EditDepartementComponent } from './edit-departement/edit-departement.component';
 import { ShowListEtudiantsComponent } from './show-list-etudiants/show-list-etudiants.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
