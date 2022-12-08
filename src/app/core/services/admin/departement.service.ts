@@ -10,9 +10,6 @@ export class DepartementService {
 
   constructor(private httpClient: HttpClient) { }
 
-
-
-
   add(path: string, requestBody: Object) {
     return this.httpClient.post(environment.PathRoot + path, requestBody);
   }get(path: string) {

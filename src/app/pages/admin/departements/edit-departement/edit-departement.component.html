@@ -13,19 +13,23 @@
         type="text"
         class="form-control"
         formControlName="nomDepart"
+        minlength="15"
         pattern="^departement +[a-zA-Z ]*"
       />
       <div
         class="message-invalid"
-        *ngIf="nomDepart.touched && nomDepart.hasError('required')"
-      >
+        *ngIf="nomDepart.touched && nomDepart.hasError('required')">
         Nom  Departement Is Required
       </div>
       <div
         class="message-invalid"
-        *ngIf="nomDepart.touched && nomDepart.hasError('pattern')"
-      >
+        *ngIf="nomDepart.touched && nomDepart.hasError('pattern')">
         Nom  Departement doit être des lettres et commencant par departement
+      </div>
+      <div
+        class="message-invalid"
+        *ngIf="nomDepart.touched && nomDepart.hasError('minlength')">
+      minlength 15 lettres
       </div>
       <!--success message-->
       <div class="message-valid" *ngIf="nomDepart.touched && !nomDepart.errors">
