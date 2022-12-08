@@ -21,6 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ToastrModule } from 'ngx-toastr';
+
+
+
 import {
   MatDatepicker,
   MatDatepickerModule,
@@ -38,6 +42,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/card-etudiant.component';
+import { SearchPipe } from './search.pipe';
+
+
 
 
 @NgModule({
@@ -62,12 +69,14 @@ import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/c
     EditUniversiteComponent,
     ShowListEtudiantsComponent,
     CardEtudiantComponent,
-
+    SearchPipe,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AdminComponentsModule,
+    ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -81,7 +90,8 @@ import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/c
     FormsModule,
     Ng2SearchPipeModule,
     Ng2OrderModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent],

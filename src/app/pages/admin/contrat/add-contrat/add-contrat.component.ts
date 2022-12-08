@@ -4,6 +4,7 @@ import { ApiService } from '../../../../core/services/admin/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContratComponent } from '../contrat.component';
 import { Contrat } from 'src/app/core/model/contrat';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-contrat',
@@ -19,7 +20,8 @@ export class AddContratComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    public dialogRef: MatDialogRef<AddContratComponent>
+    public dialogRef: MatDialogRef<AddContratComponent>,
+    private toastr: ToastrService
   ) {
     this.initForm();
     this.createForm();
@@ -53,7 +55,13 @@ export class AddContratComponent implements OnInit {
     this.addContrat(contratToAdd);
     this.resetControls();
     this.closeDialog();
+    this.toastr.success('Contrat Ajouté avec succes', 'Ajout',{
+      timeOut: 60000,positionClass: 'toast-top-right'
+    });
     location.reload();
+ 
+
+    
   }
 
   addContrat(contratBody: Object) {

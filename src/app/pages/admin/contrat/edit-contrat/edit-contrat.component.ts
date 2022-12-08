@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ContratComponent } from '../contrat.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../../core/services/admin/api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-contrat',
@@ -21,7 +22,8 @@ export class EditContratComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ContratComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private toastr: ToastrService
   ) {
     this.receivedRow = data;
     this.initForm();
@@ -59,17 +61,20 @@ export class EditContratComponent implements OnInit {
 
   upadteContrat(idContrat: number) {
     const contratUpdated = {
-      idContrat: idContrat,
+      id: idContrat,
       dateDebutContrat: this.contratForm.value.dateDebutContrat,
       dateFinContrat: this.contratForm.value.dateFinContrat,
       specialite: this.contratForm.value.specialite,
       archive: this.contratForm.value.archive,
     };
     this.apiService
-      .update('UpdateContrat', idContrat, contratUpdated)
+      .update('update', idContrat, contratUpdated)
       .subscribe(() => {
         this.closeDialog();
         location.reload();
+        this.toastr.error('Contrat Modifié', 'Modification',{
+          timeOut: 60000,positionClass: 'toast-top-right'
+        });
       });
   }
 
