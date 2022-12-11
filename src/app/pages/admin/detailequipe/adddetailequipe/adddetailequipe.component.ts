@@ -27,13 +27,10 @@ export class AdddetailequipeComponent  implements OnInit{
   
     onSubmit(form : NgForm) {
  
-        this.apiService.add('addEquipeDE',this.detailequipe).subscribe((equipe) => null);
+        this.apiService.add('AddDetailEquipe',this.detailequipe).subscribe((equipe) => null);
         location.reload()
     }
   
-    addDetailEquipe(detailequipeBody: Object) {
-      this.apiService.add('addEquipeDE', detailequipeBody).subscribe((detailequipe) => null);
-    }
   
 
     closeDialog() {

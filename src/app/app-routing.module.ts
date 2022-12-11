@@ -1,4 +1,3 @@
-import { UniversiteComponent } from './pages/admin/universite/universite.component';
 import { DepartementComponent } from './pages/admin/departement/departement.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,7 +19,7 @@ const routes: Routes = [
   { path: '', component: AppComponent },
   { path: 'contrat', component: ContratComponent },
   { path: 'departement', component: DepartementComponent },
-  { path: 'universite', component: UniversiteComponent },
+
   { path: 'addcontrat', component: AddContratComponent },
   { path: 'equipe', component: EquipeComponent , children:[
     { path: 'addequipe', component: AddEquipeComponent, },
@@ -29,6 +28,7 @@ const routes: Routes = [
  
   { path: 'detailequipe', component: DetailequipeComponent },
   { path: 'adddetailequipe', component: AdddetailequipeComponent },
+  
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contact', component: ContactComponent },

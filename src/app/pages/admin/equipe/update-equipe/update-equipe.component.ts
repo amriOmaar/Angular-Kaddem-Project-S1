@@ -52,13 +52,13 @@ export class UpdateEquipeComponent implements OnInit {
 
   upadteEquipe(equipId: number) {
     const EquipUpdated = {
-      idEquipe: equipId,
+      id: equipId,
       niveau: this.equipeForm.value.niveau,
       nomEquipe: this.equipeForm.value.nomEquipe,
       
     };
     this.apiService
-      .update('updateEquipe', equipId, EquipUpdated)
+      .update('upadateEquipe', equipId, EquipUpdated)
       .subscribe(() => {
         this.closeDialog();
         location.reload();

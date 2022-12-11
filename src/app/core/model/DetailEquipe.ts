@@ -1,6 +1,6 @@
 export class DetailEquipe{
 
-    idDetailEQuipe: number
+    id: number
     salle: number
     thematique: string
 

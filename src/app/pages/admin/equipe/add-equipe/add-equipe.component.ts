@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApiService} from "../../../../core/services/admin/api.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
   selector: 'app-add-equipe',
@@ -16,7 +17,8 @@ export class AddEquipeComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     public dialogRef: MatDialogRef<AddEquipeComponent>,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private  service: NotificationsService 
   ) {
   
   }
@@ -39,9 +41,18 @@ export class AddEquipeComponent implements OnInit {
       return;
     }else{
       console.log(this.equipeForm.value)
-      this.apiService.add('addEquipe', this.equipeForm.value).subscribe((equipe) => null);
+      this.apiService.add('saveEquipe', this.equipeForm.value).subscribe((equipe) => null);
+      this.onSuccess;
       location.reload()}
     
+  }
+  onSuccess(message){
+    this.service.success('addedd succefully', message, {
+      position:['bottom', 'right'],
+      timeOut:2000,
+      animate:'fade',
+      showProgressBar:true
+    })
   }
 
   
