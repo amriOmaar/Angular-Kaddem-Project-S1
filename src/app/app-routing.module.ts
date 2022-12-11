@@ -14,6 +14,7 @@ import {AddEquipeComponent} from "./pages/admin/equipe/add-equipe/add-equipe.com
 import { DetailequipeComponent } from './pages/admin/detailequipe/detailequipe.component';
 import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetailequipe/adddetailequipe.component';
 import { UpdateEquipeComponent } from './pages/admin/equipe/update-equipe/update-equipe.component';
+import { EquipesComponent } from './pages/admin/equipes/equipes.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -21,10 +22,7 @@ const routes: Routes = [
   { path: 'departement', component: DepartementComponent },
 
   { path: 'addcontrat', component: AddContratComponent },
-  { path: 'equipe', component: EquipeComponent , children:[
-    { path: 'addequipe', component: AddEquipeComponent, },
-    {path:'updateequipe',component:UpdateEquipeComponent  }
-  ] },
+
  
   { path: 'detailequipe', component: DetailequipeComponent },
   { path: 'adddetailequipe', component: AdddetailequipeComponent },
@@ -33,6 +31,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'equipes', loadChildren: () => import('./pages/admin/equipes/equipes.module').then(m => m.EquipesModule) },
   { path: '**', component: ErrorComponent },
 ];
 

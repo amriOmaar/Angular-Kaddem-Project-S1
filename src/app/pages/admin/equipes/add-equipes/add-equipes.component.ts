@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ApiService} from "../../../../core/services/admin/api.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { NotificationsService } from 'angular2-notifications';
+import { ApiService } from 'src/app/core/services/admin/api.service';
+import { AddEquipeComponent } from '../../equipe/add-equipe/add-equipe.component';
 
 @Component({
-  selector: 'app-add-equipe',
-  templateUrl: './add-equipe.component.html',
-  styleUrls: ['./add-equipe.component.css']
+  selector: 'app-add-equipes',
+  templateUrl: './add-equipes.component.html',
+  styleUrls: ['./add-equipes.component.css']
 })
-export class AddEquipeComponent implements OnInit {
+export class AddEquipesComponent implements OnInit {
 
   equipeForm!: FormGroup;
 
@@ -41,12 +42,10 @@ export class AddEquipeComponent implements OnInit {
     }else{
       console.log(this.equipeForm.value)
       this.apiService.add('saveEquipe', this.equipeForm.value).subscribe((equipe) => null);
-  
       location.reload()}
     
   }
-
-
+ 
   
 
   resetControls() {
@@ -58,5 +57,4 @@ export class AddEquipeComponent implements OnInit {
     this.submitted = false;
     this.dialogRef.close();
   }
-
 }

@@ -40,6 +40,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     ErrorComponent,
     RegisterComponent,
@@ -77,8 +78,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     MatDatepickerModule,
     Ng2SearchPipeModule,
     FormsModule,
-    SimpleNotificationsModule.forRoot(),
-
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
