@@ -12,6 +12,8 @@ import { ContratComponent } from './pages/admin/contrat/contrat.component';
 import { AddContratComponent } from './pages/admin/contrat/add-contrat/add-contrat.component';
 import {EquipeComponent} from "./pages/admin/equipe/equipe.component";
 import {AddEquipeComponent} from "./pages/admin/equipe/add-equipe/add-equipe.component";
+import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetailequipe/adddetailequipe.component';
+import { DetailequipeComponent } from './pages/admin/detailequipe/detailequipe.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
@@ -25,6 +27,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'detailequipe', component: DetailequipeComponent },
+  { path: 'adddetailequipe', component: AdddetailequipeComponent },
+  { path: 'equipes', loadChildren: () => import('./pages/admin/equipes/equipes.module').then(m => m.EquipesModule) },
+
   { path: 'profile', component: ProfileComponent },
   { path: 'departements', loadChildren: () => import('./pages/admin/departements/departements.module').then(m => m.DepartementsModule) },
   { path: '**', component: ErrorComponent },
