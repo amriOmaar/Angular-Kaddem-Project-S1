@@ -19,6 +19,7 @@ export class AddEquipesComponent implements OnInit {
     private apiService: ApiService,
     public dialogRef: MatDialogRef<AddEquipeComponent>,
     private fb:FormBuilder,
+
   ) {
   
   }
@@ -33,7 +34,6 @@ export class AddEquipesComponent implements OnInit {
 
   get f(){return this.equipeForm.controls}
 
-  
 
   onSubmit() {
     this.submitted = true;

@@ -30,7 +30,7 @@
           Niveau Is Required
         </div>
         <!--success message-->
-        <div class="message-valid"  *ngIf="submitted  && f['niveau'].errors">
+        <div class="message-valid"  *ngIf="submitted  && f['niveau'].valid">
           Looks good!
         </div>
       </div>
@@ -54,14 +54,14 @@
             nomEquipe Is Required
           </div>
           <!--success message-->
-          <div class="message-valid"  *ngIf="submitted  && f['nomEquipe'].errors">
+          <div class="message-valid"  *ngIf="submitted  && f['nomEquipe'].valid">
             Looks good!
           </div>
         </div>
       </div>
       <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
       <div class="text-center">
-        <button type="submit" class="btn btn-primary mx-2" >
+        <button type="submit" class="btn btn-primary mx-2" [disabled]="!equipeForm.valid"  >
           <i class="fa-regular fa-floppy-disk pe-2"></i>Save
         </button>
         <button

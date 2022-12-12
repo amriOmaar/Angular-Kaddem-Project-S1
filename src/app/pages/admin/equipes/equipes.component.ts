@@ -10,9 +10,10 @@ import { EditEquipesComponent } from './edit-equipes/edit-equipes.component';
   styleUrls: ['./equipes.component.css']
 })
 export class EquipesComponent implements OnInit {
-
+  nbrPage: number
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
   nomEqui!: any;
+
   ngOnInit(): void {
     this.getEquipes();
   }

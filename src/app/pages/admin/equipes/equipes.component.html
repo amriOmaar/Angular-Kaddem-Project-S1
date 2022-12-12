@@ -29,7 +29,7 @@
                     <th>Action</th>
                   </tr>
                   </thead>
-                  <tbody *ngFor="let equipe of equipes | filter:nomEqui"  >
+                  <tbody *ngFor="let equipe of equipes | filter:nomEqui | paginate: { itemsPerPage: 4, currentPage: nbrPage } "  >
                   <tr>
   
                     <td style="color: #256d85">{{ equipe.nomEquipe }}</td>
@@ -76,6 +76,7 @@
                   </tr>
                   </tbody>
                 </table>
+                <pagination-controls (pageChange)="nbrPage = $event"></pagination-controls>
               </div>
               <div class="dataTable-bottom">
                 <button
@@ -95,11 +96,14 @@
                 ></span
                 ><span class="mat-mdc-button-touch-target"></span>
                 </button>
+
               </div>
             </div>
+
             <!-- End Table with stripped rows -->
           </div>
         </div>
       </div>
     </div>
   </section>
+  

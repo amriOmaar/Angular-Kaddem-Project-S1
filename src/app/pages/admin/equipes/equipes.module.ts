@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AdminComponentsModule } from 'src/app/components/admin-components/admin-components.module';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { AdminComponentsModule } from 'src/app/components/admin-components/admin
     MatDatepickerModule,
     Ng2SearchPipeModule,
     FormsModule,
+    NgxPaginationModule,
+   
   ]
 })
 export class EquipesModule { }

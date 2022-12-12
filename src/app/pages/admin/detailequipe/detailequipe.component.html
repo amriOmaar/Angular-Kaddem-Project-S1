@@ -25,7 +25,7 @@
                     <th>Action</th>
                   </tr>
                   </thead>
-                  <tbody *ngFor="let detailequipe of detailequipes">
+                  <tbody *ngFor="let detailequipe of detailequipes | paginate: { itemsPerPage: 4, currentPage: nbrPage } ">
                   <tr>
   
                     <td style="color: #256d85">{{ detailequipe.thematique }}</td>
@@ -73,6 +73,8 @@
                   </tr>
                   </tbody>
                 </table>
+                <pagination-controls (pageChange)="nbrPage = $event"></pagination-controls>
+
               </div>
               <div class="dataTable-bottom">
                 <button

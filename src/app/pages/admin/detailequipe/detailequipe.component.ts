@@ -11,6 +11,7 @@ import { UpdateetailequipeComponent } from './updateetailequipe/updateetailequip
 })
 export class DetailequipeComponent implements OnInit {
   constructor(private apiService: ApiService, private dialog: MatDialog) {}
+  nbrPage: number
 
 
   ngOnInit(): void {

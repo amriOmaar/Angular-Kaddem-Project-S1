@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NotificationsService } from 'angular2-notifications';
 import { DetailEquipe } from 'src/app/core/model/DetailEquipe';
 import { ApiService } from 'src/app/core/services/admin/api.service';
 
@@ -11,17 +12,24 @@ import { ApiService } from 'src/app/core/services/admin/api.service';
 })
 export class AdddetailequipeComponent  implements OnInit{
   submitted: boolean;
-
   public detailequipe:DetailEquipe;
   constructor(  private apiService: ApiService,
-    public dialogRef: MatDialogRef<AdddetailequipeComponent>) {  
+    public dialogRef: MatDialogRef<AdddetailequipeComponent>,    private _service: NotificationsService) {  
       }
   ngOnInit(): void {
     this.detailequipe= new DetailEquipe()
   }
 
 
-     
+       
+onSucess(message){
+  this._service.success('sucess', message,{
+    position:['bottom','right'],
+    timeOut:2000,
+    animate: 'fade',
+    showProgressBar: true
+  });
+  }
   
   
   

@@ -36,6 +36,7 @@ import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetaileq
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { UpdateetailequipeComponent } from './pages/admin/detailequipe/updateetailequipe/updateetailequipe.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     MatDatepickerModule,
     Ng2SearchPipeModule,
     FormsModule,
-    
+    SimpleNotificationsModule.forRoot(),
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
