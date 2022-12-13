@@ -11,10 +11,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-departement.component.css']
 })
 export class AddDepartementComponent implements OnInit {
-
-
   departementForm!: FormGroup;
   nomDepart!: FormControl;
+  chefDepart!: FormControl;
   receivedRow: any;
 
   constructor(
@@ -32,20 +31,25 @@ export class AddDepartementComponent implements OnInit {
   }
 
   initForm() {
-       this.nomDepart = new FormControl('', [Validators.required]);
+    this.nomDepart = new FormControl('', [Validators.required]);
+    this.chefDepart = new FormControl('', [Validators.required]);
   }
 
   createForm() {
     this.departementForm = new FormGroup({
       nomDepart: new FormControl('',[Validators.required,
                                     Validators.pattern("^departement +[a-zA-Z ]*"),
-                                    Validators.minLength(15)])
+                                    Validators.minLength(15)]),
+      chefDepart: new FormControl('',[Validators.required,
+                                     Validators.pattern("^[a-zA-Z ]*"),
+                                     Validators.minLength(3)])
     });
   }
 
   onSubmit() {
     const departementToAdd = {
       nomDepart: this.departementForm.value.nomDepart,
+      chefDepart: this.departementForm.value.chefDepart,
     };
     this.addDepartement(departementToAdd);
     this.toastrService.success("Departement bien ajouté")

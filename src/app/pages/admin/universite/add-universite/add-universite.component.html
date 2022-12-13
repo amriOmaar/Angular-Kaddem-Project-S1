@@ -1,6 +1,6 @@
 
   <h2 class="card-title">Ajouter Universite</h2>
-  <!-- Vertical Form -->
+
   <form class="row g-3" [formGroup]="universiteForm" (ngSubmit)="onSubmit()">
 
     <div class="col-6 offset-3">
@@ -12,25 +12,35 @@
             'input-valid': nomUniv.touched && nomUniv.valid
           }"
           type="text"
+          name="nomUniv"
           class="form-control"
           formControlName="nomUniv"
         />
-        <div
-          class="message-invalid"
-          *ngIf="nomUniv.touched && nomUniv.hasError('required')"
-        >
-          Nom  Departement Is Required
+        <div class="message-invalid"
+            *ngIf="universiteForm.controls['nomUniv'].invalid && universiteForm.controls['nomUniv'].touched">
+            <div  *ngIf="universiteForm.controls['nomUniv'].hasError('required')">
+              il faut ajouter le nom
+            </div>
+            <div *ngIf="universiteForm.controls['nomUniv'].hasError('pattern')">
+              Nom doit être des lettres
+            </div>
+            <div *ngIf="universiteForm.controls['nomUniv'].hasError('minlength')">
+              minlength 15 lettres
+            </div>
         </div>
-        <!--success message-->
-        <div class="message-valid" *ngIf="nomUniv.touched && !nomUniv.errors">
-          Looks good!
+        <div class="message-valid" *ngIf="universiteForm.controls['nomUniv'].touched
+                && !universiteForm.controls['nomUniv'].errors">
+          Bien saisie!
         </div>
       </div>
+
     </div>
 
     <div class="text-center">
-      <button type="submit" class="btn btn-primary mx-2">
-        <i class="fa-regular fa-floppy-disk pe-2"></i>Save
+      <button type="submit" class="btn btn-primary mx-2"
+      [disabled]="!universiteForm.valid">
+      <i class="fa-regular fa-floppy-disk pe-2" ></i>
+        Save
       </button>
       <button
         type="button"
@@ -43,9 +53,10 @@
       <button
         (click)="closeDialog()"
         type="button"
-        class="btn btn-outline-danger"
+        class="btn btn-danger"
       >
-        <i class="fa-solid fa-rotate-left pe-2"></i>Back
+        <i class="fa-solid fa-rotate-left pe-2"></i>
+        Retour
       </button>
     </div>
   </form>

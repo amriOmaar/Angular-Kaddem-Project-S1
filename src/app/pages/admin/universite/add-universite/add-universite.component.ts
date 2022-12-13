@@ -1,7 +1,10 @@
+import { Universite } from './../../../../core/model/Universite';
+import { ToastrService } from 'ngx-toastr';
+import { UniversiteComponent } from './../universite.component';
 import { DepartementService } from './../../../../core/services/admin/departement.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-add-universite',
@@ -11,11 +14,19 @@ import { Component, OnInit } from '@angular/core';
 export class AddUniversiteComponent implements OnInit {
   universiteForm!: FormGroup;
   nomUniv!: FormControl;
+  receivedRow: any;
+
 
   constructor(
-    private DepartService: DepartementService,
-    public dialogRef: MatDialogRef<AddUniversiteComponent>,
-    private departService: DepartementService) { }
+    public dialogRef: MatDialogRef<UniversiteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private departService: DepartementService,
+    private toastrService: ToastrService
+    ) {
+      this.receivedRow = data;
+      this.initForm();
+      this.createForm();
+    }
 
   ngOnInit(): void {
   }
@@ -26,22 +37,25 @@ export class AddUniversiteComponent implements OnInit {
 
   createForm() {
     this.universiteForm = new FormGroup({
-      nomDepart: this.nomUniv,
+      nomUniv: new FormControl('',[Validators.required,
+                                    Validators.pattern("^[a-zA-Z ]*"),
+                                    Validators.minLength(3)])
     });
   }
 
   onSubmit() {
-    const universiteToAdd = {
+    const universityToAdd = {
       nomUniv: this.universiteForm.value.nomUniv,
     };
-    this.addUniversite(universiteToAdd);
+    this.addUniversity(universityToAdd);
+    this.toastrService.success("Universite bien ajouté")
     this.resetControls();
     this.closeDialog();
     location.reload();
   }
 
-  addUniversite(universiteBody: Object) {
-    this.departService.add('addUniv', universiteBody).subscribe((universite) => null);
+  addUniversity(universiteBody: Object) {
+    this.departService.add('saveUniversite', universiteBody).subscribe((universite) => null);
   }
 
   resetControls() {
@@ -53,5 +67,5 @@ export class AddUniversiteComponent implements OnInit {
   }
 
 
-
 }
+

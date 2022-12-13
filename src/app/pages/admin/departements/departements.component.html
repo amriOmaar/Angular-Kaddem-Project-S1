@@ -14,7 +14,7 @@
             <div class="dataTable-bottom">
               <mat-form-field appearance="outline">
                 <mat-label>Rechercher un departement</mat-label>
-                <input matInput  [(ngModel)]="nomDepartement">
+                <input matInput [(ngModel)]="nomDepartement"  [(ngModel)]="chefDepartement">
                 <mat-icon style="color: navy" matSuffix>search</mat-icon>
               </mat-form-field>
               <button
@@ -43,8 +43,11 @@
               <table class="table datatable dataTable-table ">
                 <thead class="">
                   <tr>
-                    <th scope="col" data-sortable="" style="width: 75.0537%">
+                    <th scope="col" data-sortable="" style="width: 30.0537%">
                       Nom
+                    </th>
+                    <th scope="col" data-sortable="" style="width: 50.0537%">
+                      Chef Departement
                     </th>
 
                     <th scope="col" data-sortable="" style="width: 9.203%">
@@ -54,10 +57,11 @@
                     <th></th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let departement of departements  | filter:nomDepartement
+                <tbody *ngFor="let departement of departements  | filter:nomDepartement | filter:chefDepartement
                 | paginate: { itemsPerPage: 3, currentPage: nbrPage }">
                   <tr>
                     <td style="color: #256d85">{{ departement.nomDepart }}</td>
+                    <td style="color: #256d85">{{ departement.chefDepart }}</td>
 
                     <td style="color: #256d85">
                       <button type="button" (click)="openListEtudiantDialog(departement)"

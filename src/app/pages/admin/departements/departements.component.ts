@@ -1,3 +1,4 @@
+import { Universite } from './../../../core/model/Universite';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { DepartementService } from './../../../core/services/admin/departement.service';
@@ -13,16 +14,18 @@ import { type } from 'os';
   styleUrls: ['./departements.component.css']
 })
 export class DepartementsComponent implements OnInit {
+  departements: any
+  etudiants: any
+  nomDepartement: any
+  chefDepartement:any
+  nbrPage: number
 
   constructor(private DepartService: DepartementService,
               private dialog: MatDialog,
               private toastrService: ToastrService)
               { }
 
-  departements: any
-  etudiants: any
-  nomDepartement: any
-  nbrPage: number
+
 
   ngOnInit(): void {
     this.getDepartements()
@@ -33,8 +36,6 @@ export class DepartementsComponent implements OnInit {
       .get('getDepartements')
       .subscribe((departements) => (this.departements = departements));
   }
-
-
 
   deleteDepartement(elementId: number) {
     this.DepartService

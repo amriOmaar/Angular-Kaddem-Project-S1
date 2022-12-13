@@ -39,6 +39,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/card-etudiant.component';
+import { ListUniversiteComponent } from './pages/admin/universite/list-universite/list-universite.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/c
     EditUniversiteComponent,
     ShowListEtudiantsComponent,
     CardEtudiantComponent,
+    ListUniversiteComponent,
 
   ],
   imports: [

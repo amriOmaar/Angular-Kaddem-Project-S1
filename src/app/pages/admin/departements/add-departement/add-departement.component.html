@@ -33,6 +33,36 @@
           Bien saisie!
         </div>
       </div>
+
+      <label class="form-label">Chef Departement</label>
+      <div class="input-group mb-3">
+        <input
+          [ngClass]="{
+            'input-invalid': chefDepart.touched && chefDepart.invalid,
+            'input-valid': chefDepart.touched && chefDepart.valid
+          }"
+          type="text"
+          name="chefDepart"
+          class="form-control"
+          formControlName="chefDepart"
+        />
+        <div class="message-invalid"
+            *ngIf="departementForm.controls['chefDepart'].invalid && departementForm.controls['chefDepart'].touched">
+            <div  *ngIf="departementForm.controls['chefDepart'].hasError('required')">
+              il faut ajouter le chef departement
+            </div>
+            <div *ngIf="departementForm.controls['chefDepart'].hasError('pattern')">
+              Chef  Departement doit être des lettres
+            </div>
+            <div *ngIf="departementForm.controls['chefDepart'].hasError('minlength')">
+              minlength 3 lettres
+            </div>
+        </div>
+        <div class="message-valid" *ngIf="departementForm.controls['chefDepart'].touched
+                && !departementForm.controls['chefDepart'].errors">
+          Bien saisie!
+        </div>
+      </div>
     </div>
 
     <div class="text-center">
