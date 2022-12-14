@@ -1,0 +1,86 @@
+<h2 class="card-title">Edit Detail Equipe</h2>
+
+<form class="row g-3" [formGroup]="detailForm">
+  <div class="col-6 offset-3">
+    <label class="form-label">Salle</label>
+    <select
+    tabindex="-1"
+    [ngClass]="{
+      'input-invalid': salle.touched && salle.invalid,
+      'input-valid': salle.touched && salle.valid
+    }"
+    class="form-select"
+    aria-label="Default select example"
+    formControlName="salle"
+  >
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+
+  </select>
+    <!--error message-->
+    <div
+      class="message-invalid"
+      *ngIf="salle.touched && salle.hasError('required')"
+    >
+      salle Is Required
+    </div>
+    <!--success message-->
+    <div class="message-valid" *ngIf="salle.touched && !salle.errors">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-6 offset-3">
+    <label class="form-label">thematique</label>
+    <input
+    [ngClass]="{
+      'input-invalid': thematique.touched && thematique.invalid,
+      'input-valid': thematique.touched && thematique.valid
+    }"
+    type="text"
+    class="form-control"
+    formControlName="thematique"
+    tabindex="-1"
+  />
+    <!--error message-->
+    <div
+      class="message-invalid"
+      *ngIf="thematique.touched && thematique.hasError('required')"
+    >
+      nom Equipe Is Required
+    </div>
+   <div class="message-valid" *ngIf="thematique.touched && !thematique.errors">
+      Looks good!
+    </div>
+    <!--success message-->
+  
+  </div>
+ 
+
+  
+  <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
+  <div class="text-center">
+    <button
+      (click)="upadteEquipe(receivedRow.detailequipes.id)"
+      type="submit"
+      class="btn btn-primary mx-2"
+    >
+      <i class="fa-solid fa-pen-nib pe-2"></i>Edit
+    </button>
+    <button
+      (click)="resetControls()"
+      type="button"
+      class="btn btn-warning mx-2"
+    >
+      <i class="fa-solid fa-broom pe-2"></i>
+      Reset
+    </button>
+    <button (click)="closeDialog()" type="button" class="btn btn-danger">
+      <i class="bi bi-x-circle pe-2"></i>
+      Close
+    </button>
+  </div>
+</form>
+<pre>
+<!--  {{ receivedRow | json }}-->
+</pre>

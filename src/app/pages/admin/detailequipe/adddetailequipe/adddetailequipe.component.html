@@ -1,0 +1,87 @@
+<h2 class="card-title">Add Detail Equipe</h2>
+<!-- Vertical Form -->
+<form class="row g-3" #detailForm="ngForm"        (ngSubmit)="onSubmit(detailForm)" novalidate>
+  <div class="col-6 offset-3">
+
+    <div class="col-6 offset-3">
+        <label class="form-label">salle</label>
+        <div class="input-group mb-3">
+          <select
+    tabindex="-1"
+    [ngClass]="{
+      'input-invalid': t.touched && t.invalid,
+      'input-valid': t.touched && t.valid
+    }"
+    class="form-select"
+    aria-label="Default select example"
+    [(ngModel)]="detailequipe.salle"
+    name="something"
+    #t="ngModel"
+    required
+  >
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+
+  </select>
+         
+  <div *ngIf="t.invalid && (t.dirty || t.touched)"
+  class="alert alert-danger">
+
+<div *ngIf="t.errors?.['required']">
+  salle is required.
+</div>
+</div>
+          <!--success message-->
+          <div class="message-valid" *ngIf=" t.valid">
+            Looks good!
+          </div>
+        </div>
+      </div>
+
+  <div class="col-6 offset-3">
+    <label class="form-label">thematique</label>
+    <div class="input-group mb-3">
+      <input
+      id="thematique"
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="detailequipe.thematique"
+        name="thematique"
+        appForbiddenName="bob"
+        #s="ngModel"
+        tabindex="-1"
+        
+      />
+      <div *ngIf="s.invalid && (s.dirty || s.touched)"
+      class="alert alert-danger">
+  
+    <div *ngIf="s.errors?.['required']">
+      thematique is required.
+    </div>
+    
+  </div>
+      <!--success message-->
+      <div class="message-valid" *ngIf=" s.valid">
+        Looks good!
+      </div>
+    </div>
+  </div>
+  <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary mx-2" [disabled]="detailForm.invalid" (click)="onSucess('added succcesfully')">
+      <i class="fa-regular fa-floppy-disk pe-2"></i>Save
+    </button>
+   
+    <button
+      (click)="closeDialog()"
+      type="button"
+      class="btn btn-outline-danger"
+    >
+      <i class="fa-solid fa-rotate-left pe-2"></i>Back To Detail equipe Page
+    </button>
+  </div>
+  </div>
+</form>
+<simple-notifications></simple-notifications>

@@ -43,6 +43,10 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CardEtudiantComponent } from './pages/admin/departement/card-etudiant/card-etudiant.component';
 import { SearchPipe } from './search.pipe';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { AdddetailequipeComponent } from './pages/admin/detailequipe/adddetailequipe/adddetailequipe.component';
+import { DetailequipeComponent } from './pages/admin/detailequipe/detailequipe.component';
+import { UpdateetailequipeComponent } from './pages/admin/detailequipe/updateetailequipe/updateetailequipe.component';
 
 
 
@@ -71,8 +75,9 @@ import { SearchPipe } from './search.pipe';
     ShowListEtudiantsComponent,
     CardEtudiantComponent,
     SearchPipe,
+
   
-    
+
   ],
   imports: [
     BrowserModule,
@@ -93,7 +98,7 @@ import { SearchPipe } from './search.pipe';
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-   
+    SimpleNotificationsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
