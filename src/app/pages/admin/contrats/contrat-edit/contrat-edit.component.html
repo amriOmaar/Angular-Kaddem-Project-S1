@@ -1,0 +1,133 @@
+<h2 class="card-title">Modifier un Contrat</h2>
+
+<form class="row g-3" [formGroup]="contratForm">
+  <div class="col-6 offset-3">
+    <label class="form-label">Date Debut</label>
+    <input
+      tabindex="-1"
+      type="date"
+      class="form-control position-relative"
+      formControlName="dateDebutContrat"
+      [ngClass]="{
+        'input-invalid': dateDebutContrat.touched && dateDebutContrat.invalid,
+        'input-valid': dateDebutContrat.touched && dateDebutContrat.valid
+      }"
+    />
+    <!--error message-->
+    <div
+      class="message-invalid"
+      *ngIf="dateDebutContrat.touched && dateDebutContrat.hasError('required')"
+    >
+      Date Debut obligatoire
+    </div>
+    <!--success message-->
+    <div class="message-valid" *ngIf="dateDebutContrat.touched && !dateDebutContrat.errors">
+      parfait
+    </div>
+  </div>
+  <div class="col-6 offset-3">
+    <label class="form-label">Date Fin</label>
+    <input
+      tabindex="-1"
+      type="date"
+      class="form-control"
+      formControlName="dateFinContrat"
+      [ngClass]="{
+        'input-invalid':
+          (dateFinContrat.touched && dateFinContrat.invalid) ||
+          (dateFinContrat.touched && dateFinContrat.value <= dateDebutContrat.value),
+        'input-valid':
+          dateFinContrat.touched && dateFinContrat.valid && dateFinContrat.value > dateDebutContrat.value
+      }"
+    />
+    <!--error message-->
+    <div
+      class="message-invalid"
+      *ngIf="dateFinContrat.touched && dateFinContrat.hasError('required')"
+    >
+      Date Fin obligatoire
+    </div>
+    <div
+      class="message-invalid"
+      *ngIf="dateFinContrat.touched && dateFinContrat.value <= dateDebutContrat.value"
+    >
+      Date Fin  doit etre superieur au Date Debut
+    </div>
+    <!--success message-->
+    <div
+      class="message-valid"
+      *ngIf="
+        dateFinContrat.touched && !dateFinContrat.errors && dateFinContrat.value > dateDebutContrat.value
+      "
+    >
+     parfait
+    </div>
+  </div>
+  <div class="col-6 offset-3">
+    <label class="form-label">Specialite</label>
+    <select
+      [ngClass]="{
+        'input-invalid': specialite.touched && specialite.invalid,
+        'input-valid': specialite.touched && specialite.valid
+      }"
+     
+      class="form-select"
+      tabindex="-1"
+      aria-label="Default select example"
+      formControlName="specialite"
+    >
+      <option value="IA" selected>IA</option>
+      <option value="RESEAUX">RESEAUX</option>
+      <option value="CLOUD">CLOUD</option>
+      <option value="SECURITE">SECURITE</option>
+    </select>
+    <div
+      class="message-invalid"
+      *ngIf="specialite.touched && specialite.hasError('required')"
+    >
+      Specialite obligatoire
+    </div>
+    <!--success message-->
+    <div class="message-valid" *ngIf="specialite.touched && !specialite.errors">
+      parfait
+    </div>
+  </div>
+  <div class="col-6 offset-3 d-flex gap-4">
+    <label for="flexSwitchCheckDefault" class="form-label">Archive</label>
+    <div class="form-check form-switch" style="font-size: 18px">
+      <input
+        tabindex="-1"
+        class="form-check-input"
+        type="checkbox"
+        id="flexSwitchCheckDefault"
+        formControlName="archive"
+      />
+    </div>
+  </div>
+  
+  <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
+  <div class="text-center">
+    <button
+      (click)="upadteContrat(receivedRow.contrat.id)"
+      type="submit"
+      class="btn btn-primary mx-2"
+    >
+      <i class="fa-solid fa-pen-nib pe-2"></i>Modifier
+    </button>
+    <button
+      (click)="resetControls()"
+      type="button"
+      class="btn btn-warning mx-2"
+    >
+      <i class="fa-solid fa-broom pe-2"></i>
+      Reset
+    </button>
+    <button (click)="closeDialog()" type="button" class="btn btn-danger">
+      <i class="bi bi-x-circle pe-2"></i>
+      Fermer
+    </button>
+  </div>
+</form>
+<pre>
+<!--  {{ receivedRow | json }}-->
+</pre>

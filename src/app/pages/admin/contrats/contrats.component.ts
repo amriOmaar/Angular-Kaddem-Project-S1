@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/core/services/admin/api.service';
 import { MatDialog } from '@angular/material/dialog';
-import { EditContratComponent } from './edit-contrat/edit-contrat.component';
-import { AddContratComponent } from './add-contrat/add-contrat.component';
-import{pdfMake} from 'pdfmake/build/pdfMake';
-import { style } from '@angular/animations';
-import { Contrat } from 'src/app/core/model/contrat';
-import { ContratService } from 'src/app/core/services/contrat.service';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from 'src/app/core/services/admin/api.service';
+import { ContratService } from 'src/app/core/services/contrat.service';
 import { PdfService } from 'src/app/core/services/pdf.service';
+import { ContratEditComponent } from './contrat-edit/contrat-edit.component';
+import { ContratAddComponent } from './contrat-add/contrat-add.component';
 
 @Component({
-  selector: 'app-contrat',
-  templateUrl: './contrat.component.html',
-  styleUrls: ['./contrat.component.css'],
+  selector: 'app-contrats',
+  templateUrl: './contrats.component.html',
+  styleUrls: ['./contrats.component.css']
 })
-export class ContratComponent implements OnInit {
+export class ContratsComponent implements OnInit {
+
   constructor(private apiService: ApiService, private dialog: MatDialog, private contratService :ContratService,  private toastr: ToastrService,private pdfService: PdfService) {}
 
   ngOnInit(): void {
@@ -44,11 +42,11 @@ export class ContratComponent implements OnInit {
   }
 
   openAddContratDialog() {
-    this.dialog.open(AddContratComponent, { width: '40%' });
+    this.dialog.open(ContratAddComponent, { width: '40%' });
   }
 
   openEditContratDialog(contrat: Object) {
-    this.dialog.open(EditContratComponent, {
+    this.dialog.open(ContratEditComponent, {
       width: '40%',
       data: { contrat },
     });
@@ -58,5 +56,6 @@ export class ContratComponent implements OnInit {
     this.pdfService.generatePdf();
   }
   
+
 
 }

@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'departements', loadChildren: () => import('./pages/admin/departements/departements.module').then(m => m.DepartementsModule) },
+  { path: 'contrats', loadChildren: () => import('./pages/admin/contrats/contrats.module').then(m => m.ContratsModule) },
   { path: '**', component: ErrorComponent },
 ];
 

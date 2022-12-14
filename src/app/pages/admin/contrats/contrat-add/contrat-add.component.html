@@ -1,0 +1,140 @@
+<!--<main id="main" class="main">-->
+<!--  <section class="section">-->
+<!--    <div class="card">-->
+<!--      <div class="card-body">-->
+    <h2 class="card-title">Ajout un Contrat</h2>
+    <!-- Vertical Form -->
+    <form class="row g-3" [formGroup]="contratForm" (ngSubmit)="onSubmit()">
+      <div class="col-6 offset-3">
+        <label class="form-label">Date Debut</label>
+        <input
+          formControlName="dateDebutContrat"
+          tabindex="-1"
+          type="date"
+          class="form-control position-relative"
+          [ngClass]="{
+            'input-invalid': dateDebutContrat.touched && dateDebutContrat.invalid,
+            'input-valid': dateDebutContrat.touched && dateDebutContrat.valid
+          }"
+        />
+        <!--error message-->
+        <div
+          class="message-invalid"
+          *ngIf="dateDebutContrat.touched && dateDebutContrat.hasError('required')"
+        >
+          Date Debut obligatoire
+        </div>
+        <!--success message-->
+        <div class="message-valid" *ngIf="dateDebutContrat.touched && !dateDebutContrat.errors">
+          parfait
+        </div>
+      </div>
+      <div class="col-6 offset-3">
+        <label class="form-label">Date Fin</label>
+        <input
+        formControlName="dateFinContrat"
+          tabindex="-1"
+          type="date"
+          class="form-control"
+          [ngClass]="{
+            'input-invalid':
+              (dateFinContrat.touched && dateFinContrat.invalid) ||
+              (dateFinContrat.touched && dateFinContrat.value <= dateDebutContrat.value),
+            'input-valid':
+              dateFinContrat.touched && dateFinContrat.valid && dateFinContrat.value > dateDebutContrat.value
+          }"
+        />
+        <!--error message-->
+        <div
+          class="message-invalid"
+          *ngIf="dateFinContrat.touched && dateFinContrat.hasError('required')"
+        >
+        Date Fin obligatoire
+      </div>
+        <div
+          class="message-invalid"
+          *ngIf="dateFinContrat.touched && dateFinContrat.value <= dateDebutContrat.value"
+        >
+          Date Fin doit etre supérieur au Date Debut
+        </div>
+        <!--success message-->
+        <div
+          class="message-valid"
+          *ngIf="
+            dateFinContrat.touched && !dateFinContrat.errors && dateFinContrat.value > dateDebutContrat.value
+          "
+        >
+          parfait
+        </div>
+      </div>
+      <div class="col-6 offset-3">
+        <label class="form-label">Specialite</label>
+        <select
+        formControlName="specialite"
+        
+          tabindex="-1"
+          [ngClass]="{
+            'input-invalid': specialite.touched && specialite.invalid,
+            'input-valid': specialite.touched && specialite.valid
+          }"
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option value="IA" selected>IA</option>
+          <option value="RESEAUX">RESEAUX</option>
+          <option value="CLOUD">CLOUD</option>
+          <option value="SECURITE">SECURITE</option>
+        </select>
+        <div
+          class="message-invalid"
+          *ngIf="specialite.touched && specialite.hasError('required')"
+        >
+          Specialite obligatoire
+        </div>
+        <!--success message-->
+        <div class="message-valid" *ngIf="specialite.touched && !specialite.errors">
+           parfait
+        </div>
+      </div>
+      <div class="col-6 offset-3 d-flex gap-4">
+        <label for="flexSwitchCheckDefault" class="form-label">Archive</label>
+        <div class="form-check form-switch" style="font-size: 18px">
+          <input
+          formControlName="archive"
+            tabindex="-1"
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckDefault"
+          />
+        </div>
+      </div>
+      
+        
+      <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mx-2">
+          <i class="fa-regular fa-floppy-disk pe-2"></i>Enregistrer
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning mx-2"
+          (click)="resetControls()"
+        >
+          <i class="fa-solid fa-broom pe-2"></i>
+          Reset
+        </button>
+        <button
+          (click)="closeDialog()"
+          type="button"
+          class="btn btn-outline-danger"
+        >
+          <i class="fa-solid fa-rotate-left pe-2"></i>Retour
+        </button>
+      </div>
+    </form>
+    <!-- Vertical Form -->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </section>-->
+    <!--</main>-->
+    
