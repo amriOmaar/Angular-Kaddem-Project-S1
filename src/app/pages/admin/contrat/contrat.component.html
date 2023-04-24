@@ -44,9 +44,9 @@
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody *ngFor="let contrat of contrats |filter:specialite ">
+                <tbody *ngFor="let contrat of contrats |filter:specialite |paginate: { itemsPerPage: 4, currentPage: nbrPage } ">
                   <tr>
-                    <td style="color: #256d85">{{ contrat.etudiant}}</td>
+                    <td style="color: #256d85">{{ contrat.etudiant.nom}}</td>
 
                     <td style="color: #256d85">{{ contrat.specialite }}</td>
                     <td style="color: #7743db">
@@ -101,6 +101,8 @@
                   </tr>
                 </tbody>
               </table>
+              <pagination-controls (pageChange)="nbrPage = $event"></pagination-controls>
+
             </div>
             <div class="dataTable-bottom">
               <button

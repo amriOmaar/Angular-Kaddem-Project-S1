@@ -51,6 +51,7 @@ import { UpdateetailequipeComponent } from './pages/admin/detailequipe/updateeta
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,9 +75,9 @@ import { UpdateetailequipeComponent } from './pages/admin/detailequipe/updateeta
     ShowListEtudiantsComponent,
     CardEtudiantComponent,
     SearchPipe,
-    DetailequipeComponent,
-    AdddetailequipeComponent,
-    UpdateetailequipeComponent,
+
+  
+
   ],
   imports: [
     BrowserModule,

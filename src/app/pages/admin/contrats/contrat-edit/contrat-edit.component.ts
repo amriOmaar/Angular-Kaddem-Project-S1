@@ -1,16 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ContratComponent } from '../contrat.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../../../../core/services/admin/api.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from 'src/app/core/services/admin/api.service';
+import { ContratsComponent } from '../contrats.component';
 
 @Component({
-  selector: 'app-edit-contrat',
-  templateUrl: './edit-contrat.component.html',
-  styleUrls: ['./edit-contrat.component.css'],
+  selector: 'app-contrat-edit',
+  templateUrl: './contrat-edit.component.html',
+  styleUrls: ['./contrat-edit.component.css']
 })
-export class EditContratComponent implements OnInit {
+export class ContratEditComponent implements OnInit {
+
   contratForm!: FormGroup;
   dateDebutContrat!: FormControl;
   dateFinContrat!: FormControl;
@@ -20,7 +21,7 @@ export class EditContratComponent implements OnInit {
   receivedRow: any;
 
   constructor(
-    public dialogRef: MatDialogRef<ContratComponent>,
+    public dialogRef: MatDialogRef<ContratsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private apiService: ApiService,
     private toastr: ToastrService
@@ -81,4 +82,5 @@ export class EditContratComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
+
 }
